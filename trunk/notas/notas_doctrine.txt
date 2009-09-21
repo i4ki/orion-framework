@@ -1,0 +1,8 @@
+Nota 1
+
+Os Models obrigatoriamente devem conter o método "setTableDefinition", mesmo se
+este model usar um template (por actAs), do contrário, será gerado as estranhas
+tabelas doctrine__record__abstract... ¬¬
+
+Nota 2
+

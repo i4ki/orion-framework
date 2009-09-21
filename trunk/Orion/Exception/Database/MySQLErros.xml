@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projeto name="orion" class="MySQLErros">
+	<erro codigo="600">
+		<msg>Usuário ou senha incorreta</msg>
+	</erro>
+	<erro codigo="601">
+		<msg>Verifique a existência do banco de dados</msg>
+	</erro>
+	<erro codigo="602">
+		<msg>Problema com a query SQL</msg>
+	</erro>
+</projeto>

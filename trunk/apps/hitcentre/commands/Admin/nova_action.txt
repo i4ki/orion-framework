@@ -1,0 +1,10 @@
+/**
+* Procedimento
+*/
+
+-- Criar a classe "xxxxxCommand"
+-- -- Que herda a classe "Security_Hitcentre_Admin"
+-- -- -- Implementa a interface "Command"
+
+-- Chamar parent::_construct no construct da classe Action
+-- Ajustar a função defaultOperations();

@@ -1,0 +1,46 @@
+Course:
+  Course_1:
+    name: Inglês
+    created_by: tiago_moura
+    created_at: '2009-08-30 04:21:07'
+    updated_at: '2009-08-30 04:21:07'
+  Course_2:
+    name: Frances
+    created_by: tiago_moura
+    created_at: '2009-08-30 04:22:33'
+    updated_at: '2009-08-30 04:22:33'
+  Course_3:
+    name: Alemão
+    created_by: tiago_moura
+    created_at: '2009-08-30 05:06:38'
+    updated_at: '2009-08-30 05:06:38'
+  Course_4:
+    name: Noruegues
+    created_by: tiago_moura
+    created_at: '2009-08-30 05:07:14'
+    updated_at: '2009-08-30 05:07:14'
+  Course_5:
+    name: Portugues
+    created_by: tiago_moura
+    created_at: '2009-08-30 05:08:59'
+    updated_at: '2009-08-30 05:08:59'
+  Course_6:
+    name: Espanhol
+    created_by: tiago_moura
+    created_at: '2009-08-30 05:11:49'
+    updated_at: '2009-08-30 05:11:49'
+  Course_7:
+    name: Africaner
+    created_by: tiago_moura
+    created_at: '2009-08-30 05:12:01'
+    updated_at: '2009-08-30 05:12:01'
+  Course_8:
+    name: Japones
+    created_by: tiago_moura
+    created_at: '2009-08-30 05:33:29'
+    updated_at: '2009-08-30 05:33:29'
+  Course_9:
+    name: Mandarim
+    created_by: tiago_moura
+    created_at: '2009-08-30 05:36:14'
+    updated_at: '2009-08-30 05:36:14'

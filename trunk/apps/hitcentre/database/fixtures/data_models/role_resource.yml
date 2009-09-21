@@ -1,0 +1,211 @@
+RoleResource:
+  RoleResource_1_1:
+    Role: Role_1
+    Resource: Resource_1
+    op_create: '1'
+    op_update: '1'
+    op_delete: '1'
+    op_see: '1'
+  RoleResource_1_2:
+    Role: Role_1
+    Resource: Resource_2
+    op_create: '1'
+    op_update: '1'
+    op_delete: '1'
+    op_see: '1'
+  RoleResource_1_3:
+    Role: Role_1
+    Resource: Resource_3
+    op_create: '1'
+    op_update: '1'
+    op_delete: '1'
+    op_see: '1'
+  RoleResource_1_4:
+    Role: Role_1
+    Resource: Resource_4
+    op_create: '1'
+    op_update: '1'
+    op_delete: '1'
+    op_see: '1'
+  RoleResource_1_5:
+    Role: Role_1
+    Resource: Resource_5
+    op_create: '1'
+    op_update: '1'
+    op_delete: '1'
+    op_see: '1'
+  RoleResource_1_6:
+    Role: Role_1
+    Resource: Resource_6
+    op_create: '1'
+    op_update: '1'
+    op_delete: '1'
+    op_see: '1'
+  RoleResource_1_7:
+    Role: Role_1
+    Resource: Resource_7
+    op_create: '1'
+    op_update: '1'
+    op_delete: '1'
+    op_see: '1'
+  RoleResource_1_8:
+    Role: Role_1
+    Resource: Resource_8
+    op_create: '1'
+    op_update: '1'
+    op_delete: '1'
+    op_see: '1'
+  RoleResource_2_1:
+    Role: Role_2
+    Resource: Resource_1
+    op_create: '0'
+    op_update: '0'
+    op_delete: '0'
+    op_see: '1'
+  RoleResource_2_2:
+    Role: Role_2
+    Resource: Resource_2
+    op_create: '0'
+    op_update: '0'
+    op_delete: '0'
+    op_see: '1'
+  RoleResource_2_3:
+    Role: Role_2
+    Resource: Resource_3
+    op_create: '0'
+    op_update: '0'
+    op_delete: '0'
+    op_see: '1'
+  RoleResource_2_4:
+    Role: Role_2
+    Resource: Resource_4
+    op_create: '0'
+    op_update: '0'
+    op_delete: '0'
+    op_see: '1'
+  RoleResource_2_5:
+    Role: Role_2
+    Resource: Resource_5
+    op_create: '0'
+    op_update: '0'
+    op_delete: '0'
+    op_see: '1'
+  RoleResource_2_6:
+    Role: Role_2
+    Resource: Resource_6
+    op_create: '0'
+    op_update: '0'
+    op_delete: '0'
+    op_see: '1'
+  RoleResource_2_7:
+    Role: Role_2
+    Resource: Resource_7
+    op_create: '0'
+    op_update: '0'
+    op_delete: '0'
+    op_see: '0'
+  RoleResource_2_8:
+    Role: Role_2
+    Resource: Resource_8
+    op_create: '0'
+    op_update: '0'
+    op_delete: '0'
+    op_see: '1'
+  RoleResource_3_1:
+    Role: Role_3
+    Resource: Resource_1
+    op_create: '1'
+    op_update: '1'
+    op_delete: '1'
+    op_see: '1'
+  RoleResource_3_2:
+    Role: Role_3
+    Resource: Resource_2
+    op_create: '1'
+    op_update: '1'
+    op_delete: '1'
+    op_see: '1'
+  RoleResource_3_3:
+    Role: Role_3
+    Resource: Resource_3
+    op_create: '1'
+    op_update: '1'
+    op_delete: '1'
+    op_see: '1'
+  RoleResource_3_4:
+    Role: Role_3
+    Resource: Resource_4
+    op_create: '1'
+    op_update: '1'
+    op_delete: '1'
+    op_see: '1'
+  RoleResource_3_5:
+    Role: Role_3
+    Resource: Resource_5
+    op_create: '1'
+    op_update: '1'
+    op_delete: '1'
+    op_see: '1'
+  RoleResource_3_6:
+    Role: Role_3
+    Resource: Resource_6
+    op_create: '1'
+    op_update: '1'
+    op_delete: '1'
+    op_see: '1'
+  RoleResource_3_7:
+    Role: Role_3
+    Resource: Resource_7
+    op_create: '1'
+    op_update: '1'
+    op_delete: '1'
+    op_see: '1'
+  RoleResource_3_8:
+    Role: Role_3
+    Resource: Resource_8
+    op_create: '1'
+    op_update: '1'
+    op_delete: '1'
+    op_see: '1'
+  RoleResource_4_1:
+    Role: Role_4
+    Resource: Resource_1
+    op_create: '0'
+    op_update: '0'
+    op_delete: '0'
+    op_see: '1'
+  RoleResource_4_2:
+    Role: Role_4
+    Resource: Resource_2
+    op_create: '0'
+    op_update: '0'
+    op_delete: '0'
+    op_see: '1'
+  RoleResource_4_3:
+    Role: Role_4
+    Resource: Resource_3
+    op_create: '0'
+    op_update: '0'
+    op_delete: '0'
+    op_see: '1'
+  RoleResource_4_4:
+    Role: Role_4
+    Resource: Resource_4
+    op_create: '0'
+    op_update: '1'
+    op_delete: '0'
+    op_see: '1'
+  RoleResource_4_5:
+    Role: Role_4
+    Resource: Resource_5
+    op_create: '0'
+    op_update: '0'
+    op_delete: '0'
+    op_see: '1'
+  RoleResource_4_6:
+    Role: Role_4
+    Resource: Resource_6
+    op_create: '0'
+    op_update: '0'
+    op_delete: '0'
+    op_see: '1'

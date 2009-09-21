@@ -1,0 +1,20 @@
+project: hitcentre
+    path: /mnt/www/Orion/apps/hitcentre
+    commands: commands
+    database: database
+    models: database/models
+    fixtures: database/fixtures
+    sql: database/sql
+    libs: libs
+    scripts: scripts
+    tests: tests
+    view: view	
+    orm: doctrine
+    path_orm: ../Orion/ORM/Doctrine/Doctrine.php
+    host_bd: localhost
+    user_bd: root
+    pass_bd: 1123581321
+    driver: mysql
+    database: hitcentre_dev
+    charset_db: utf8
+    collate_db: utf8_general_ci  

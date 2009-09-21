@@ -1,0 +1,15 @@
+ConfigPortal:
+  ConfigPortal_1:
+    domain: 'http://www.localhost'
+    default_title: 'Hit Centre of Language'
+    meta_description: 'Curso d Idiomas'
+    meta_keywords: 'curso,idiomas,online,aprenda,learning,ingles, english'
+    approve_profile: '0'
+    auth_email: '0'
+    smtp_email: smtp.localhost
+    port_email: '54'
+    user_email: hit
+    pass_email: '123456'
+    allow_ssl: '0'
+    allow_logs: '1'
+    login_admin: hit_admin

@@ -1,0 +1,25 @@
+PedagogicStudent:
+  PedagogicStudent_1:
+    nr_children: '0'
+    hobby: não
+    expectations: não
+    Course: Course_2
+    course_book: 'sei lah'
+    appraised_for: ''
+    level: '0'
+  PedagogicStudent_2:
+    nr_children: '0'
+    hobby: ''
+    expectations: ''
+    Course: Course_1
+    course_book: ''
+    appraised_for: ''
+    level: '0'
+  PedagogicStudent_3:
+    nr_children: '0'
+    hobby: ''
+    expectations: ''
+    Course: Course_4
+    course_book: ''
+    appraised_for: ''
+    level: '0'

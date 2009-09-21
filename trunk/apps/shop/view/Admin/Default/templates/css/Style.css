@@ -1,0 +1,124 @@
+/**
+ * Cores usadas
+ *
+ * Verde: #39820D
+ * Bege: #F0EFEA
+ */
+@CHARSET "UTF-8";
+
+*{
+	margin:0;
+	padding:0;
+}
+
+body { font-size:62.5%; margin:0; padding:0; }
+
+/**
+ * MENU IPOD STYLE
+ */
+#menuLog { font-size:1.4em; margin:20px; }
+.hidden { position:absolute; top:0; left:-9999px; width:1px; height:1px; overflow:hidden; }
+
+.fg-button {
+    clear:left;
+    margin:0 4px 40px 20px;
+    padding: .4em 1em;
+    text-decoration:none !important;
+    cursor:pointer;
+    position: relative;
+    text-align: center;
+    zoom: 1;
+ }
+.fg-button .ui-icon { position: absolute; top: 50%; margin-top: -8px; left: 50%; margin-left: -8px; }
+a.fg-button { float:left;  }
+button.fg-button { width:auto; overflow:visible; } /* removes extra button width in IE */
+
+.fg-button-icon-left { padding-left: 2.1em; }
+.fg-button-icon-right { padding-right: 2.1em; }
+.fg-button-icon-left .ui-icon { right: auto; left: .2em; margin-left: 0; }
+.fg-button-icon-right .ui-icon { left: auto; right: .2em; margin-left: 0; }
+.fg-button-icon-solo { display:block; width:8px; text-indent: -9999px; }	 /* solo icon buttons must have block properties for the text-indent to work */
+
+.fg-button.ui-state-loading .ui-icon { background: url(spinner_bar.gif) no-repeat 0 0; }
+/** Arrumar bug de integração do menu com o layout-jquery */
+.positionHelper { z-index: 10000;}
+
+#menu { width:140px;}
+
+
+/**
+ * LAYOUT JQUERY-UI
+ */
+.ui-layout-pane { /** Todos os paineis */
+	background: #FFF;
+	border: 1px solid #BBB;
+	padding: 10px;
+	overflow: auto;
+}
+
+.ui-layout-resizer { /** Todas as barras resizer */
+	background: #F2EFE5;
+}
+
+.ui-layout-resizer:hover {background: #ffedb0; border: #ffedb0;}
+
+.ui-layout-toggler { /* Todos os botões */
+	background: #CCC;
+}
+
+.ui-layout-toggler-west-closed {
+	width:50px;
+	height:100px;
+}
+
+.center-box{
+	margin:0 auto;
+	border:1px solid #47912B;
+	max-width:600px;
+}
+.center-box h3{
+	background:#47912B;
+	border-bottom:1px solid #47912B;
+	color:#F0EFEA;
+	padding:5px;
+	font-size:14px;
+}
+
+.ui-layout-north	{background:#F0EFEA;background-image:url("../imagens/header_bg2.jpg");}
+.ui-layout-south 	{background:#F0EFEA;background-image:url("../imagens/bottom_bg.jpg");}
+.ui-layout-center 	{background:#F0EFEA;overflow-y:auto;padding:0;}
+.ui-layout-west		{background:#F0EFEA;}
+.ui-layout-east		{background:#F0EFEA;}
+
+.center-header h1 {
+	font-family:
+	color:#47912B;
+}
+
+.forms input {
+	padding:2px;
+	border:1px solid #ddf0d0;
+	background:#f9f9f1;
+}
+
+.center-body fieldset {
+	display:block;
+	padding:5px 10px 5px 10px;
+	line-height:20px;
+	margin-bottom:10px;
+	margin-top:25px;
+	margin-left:10px;
+	margin-right:10px;
+	border-color:#c9ffbf;	
+}
+.center-body legend {
+	font-size:11px;
+	font-weight:bold;
+	margin-top:20px;
+	margin-bottom:5px;
+	color:#F0EFEA;
+	padding:3px 5px 3px 5px;
+	background:#47912B;
+	border:1px solid #ccc;
+}
+	

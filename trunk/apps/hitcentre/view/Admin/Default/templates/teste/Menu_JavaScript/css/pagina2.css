@@ -1,0 +1,68 @@
+/*
+* @package Menu Drop Down
+* @copyleft (cc) 2008 UNIFACS - Desenvolvimento Web Sites - Turma 04. Alguns direitos reservados
+* @licence http://www.gnu.org/licence/lgpl.html LGPL Licence
+* @author Marcelo Pereira Rodrigues - marcelo@alconta.com.br
+* @author Eduardo de Souza Santos - eduipd@yahoo.com.br
+* @author Alexandre Valverde - alexandre_valverde@hotmail.com
+* @author Danilo Pinheiro - pivamix@hotmail.com*/
+body {
+	margin:0px;
+	
+}
+#conteudo{
+	width:100%;
+	border-right-width: 1px;
+	border-right-style: solid;
+	border-right-color: #0D2846;
+	border-left-width: 1px;
+	border-left-style: solid;
+	border-left-color: #0D2846;
+	background-color: #CCCCCC;
+}
+#topo{
+	width:100%;
+	height:100px;
+	background-image: url(../img/topo_100%25.jpg);
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #FFFFFF;
+}
+#menu {
+	width:100%;
+	height:27px;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #0D2846;
+	border-top-width: 1px;
+	border-top-style: solid;
+	border-top-color: #0D2846;
+	background-color: #996600;
+}
+#corpo_texto {
+	width:99%;
+	padding-left:10px;
+	padding-right:10px;
+}
+#corpo {
+	width:100%;
+	height:auto;
+	background-color: #CCCCCC;
+}
+#rodape{
+	width:100%;
+	height:30px;
+	background-color: #0D3862;
+}
+.texto {
+	font-family:"Trebuchet MS";
+	font-size:14px;
+	font-weight:normal;
+	
+}
+.texto_rodape {
+	color:#FFFFFF;
+	font-size: 12px;
+	font-weight: normal;
+	text-align: center;
+}
