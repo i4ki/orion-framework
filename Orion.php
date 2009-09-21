@@ -27,7 +27,7 @@
  * @license     http://www.opensource.org/licenses/lgpl-license.php LGPL
  * @link        www.orion-framework.org
  * @since       1.0
- * @version     $Revision: 1 $
+ * @version     $Revision$
  */
 final class Orion
 {
