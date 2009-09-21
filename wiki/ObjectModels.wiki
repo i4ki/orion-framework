@@ -1,0 +1,16 @@
+=OrionObjectModels=
+
+_italic_ Isto não tem relaçao com os padrões de Modelos de Objetos, como, Java Object Model ou Document Object Model, trata-se de uma nomenclatura do framework Orion.
+_italic_
+= Introduction =
+
+Quando se utiliza a técnica de desenvolvimento ORM (Mapeamento Objeto-Relacional), cada tabela do banco de dados é representada por uma classe (Model) e os campos da tabela são objetos. Assim, o banco de dados, juntamente com todo o projeto, possuem o [paradigma] orientado à objetos.
+
+Assim os objetos do banco de dados possuem todas as caracteristicas dos objetos já 
+
+= Details =
+
+Add your content here.  Format your content with:
+  * Text in *bold* or _italic_
+  * Headings, paragraphs, and lists
+  * Automatic links to other wiki pages
