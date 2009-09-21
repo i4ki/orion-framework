@@ -19,7 +19,7 @@
 */
 
 /**
- * Orion
+ * Orion 
  * Base do Orion - Faz a comunicação entre o cliente e o Kernel
  *
  * @package     Orion
@@ -29,7 +29,7 @@
  * @since       1.0
  * @version     $Revision: 1 $
  */
-class Orion
+final class Orion
 {
 	const VERSION					= 0.2;
 	const SITE						= 'www.orion-framework.org';
@@ -48,27 +48,11 @@ class Orion
 	const ATTR_ENV_DEV				= 7;
 	const ATTR_ENV_TEST				= 8;
 	const ATTR_ENV_PROD				= 9;
-	
-	/**
-	 * Árvore de relacionamentos Modules -> Actions
-	 * Constantes para o CRUD
-	 * Create 	= CRUD_C
-	 * Retrieve	= CRUD_R
-	 * Update	= CRUD_U
-	 * Delete	= CRUD_D
-	 * @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-	 * @ Cada módulo deve implementar o CRUD   @
-	 * @ /ModuleX/Orion::CRUD_C                @
-	 * @ /ModuleX/Orion::CRUD_R                @
-	 * @ /ModuleX/Orion::CRUD_U                @
-	 * @ /ModuleX/Orion::CRUD_D                @
-	 * @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-	 *
-	 */
-	const ATTR_CRUD_C				= 11;
-	const ATTR_CRUD_R				= 12;
-	const ATTR_CRUD_U				= 13;
-	const ATTR_CRUD_D				= 14;
+	const ATTR_SPECIAL_ULTIMATE_X9	= 10;
+	const ATTR_SOBRA1				= 11;
+	const ATTR_SOBRA2				= 12;
+	const ATTR_SOBRA3				= 13;
+	const ATTR_SOBRA4				= 14;
 	
 	/**
 	 * Formato de Classes
