@@ -4,8 +4,7 @@ _Isto não tem relaçao com os padrões de Modelos de Objetos, como, Java Object
 = Introduction =
 
 Quando se utiliza a técnica de desenvolvimento ORM (Mapeamento Objeto-Relacional), cada tabela do banco de dados é representada por uma classe (Model) e os campos da tabela são objetos. Assim, o banco de dados, juntamente com todo o projeto, possuem o [paradigma] orientado à objetos.
-Assim os objetos do banco de dados possuem todas as caracteristicas dos objetos nativos da 
-linguagem. 
+Assim os objetos do banco de dados possuem todas as caracteristicas dos objetos nativos da linguagem. 
 
 ObjectModels para o Orion Framework são objetos abstratos, que podem ser extendidos por muitos outros objetos mais específicos e reduzindo muito a programação e manutenção dos Models.
 
@@ -38,6 +37,12 @@ Student:
       type: string(255)
     nr: 
       type: integer
+    city_id:
+      type: integer
+    state_id:
+      type: integer
+    country_id:
+      type: integer
 
 # Models/Teacher.php
 Teacher:
@@ -48,6 +53,8 @@ Teacher:
     birth:
       type: date
       notnull: true
+    language_id:
+      type: integer
     address:
       type: string(255)
       notnull: true
@@ -56,8 +63,37 @@ Teacher:
       notnull: true
     nr:
       type: integer
-    language_id:
+    city_id:
       type: integer
+    state_id:
+      type: integer
+    country_id:
+      type: integer
+
 }}}
 
-Como estamos falando de objetos, podemos ver que o objeto "Student" e o objeto "Teacher" possuem muitas semelhanças
+Como estamos falando de objetos, podemos ver que o objeto "Student" e o objeto "Teacher" possuem muitas semelhanças e é nessas semelhanças que se baseia esse recurso do Orion.
+Objetos são estruturas hierárquicas, que respeitam propriedades como Herança, Encapsulamento, etc. 
+Esta hierárquia pode ser vista nas tabelas acima, onde as propriedades (campos) "name, birth, address, district, nr, city_id, state_id, country_id" são comuns aos dois objetos.
+Isso mostra que esses dois objetos herdam propriedades de um outro objeto abstrato, que chamaremos de "Person".
+Veja as propriedades deste objeto:
+{{{
+Person:
+  columns:
+    name:
+      type: integer
+    birth:
+      type: date
+    address:
+      type: string(255)
+    district:
+      type: string(255)
+    nr:
+      type: string(255)
+    city_id:
+      type: integer
+    state_id:
+      type: integer
+    country_id:
+      type: integer
+}}}
