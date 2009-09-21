@@ -1,0 +1,75 @@
+/* ### ADD USERS FORMS ### */
+
+.divAddUser {
+	float:left;
+}
+
+.tableAddUser {
+	width:700px;
+}
+
+.tableAddUser td {
+	width:200px;
+	border:0;
+}
+
+.tableAddUser td.label {
+	width:100px;
+	text-align:right;
+}
+
+.tableAddUser td.label label {
+	text-align:right;
+}
+
+.tableAddUser td.input {
+	width:300px;
+	text-align:left;
+}
+
+form.form label {
+	clear:left;
+	display:block;
+	float:right;
+	width:100px;
+	text-align:right;
+	padding-right:10px;
+	margin-bottom:5px;
+}
+
+.clear {
+	clear:both;
+}
+
+.input select {
+	width:150px;
+}
+
+tr.seePerfil td {
+	height: 300px;
+}
+
+form.form label.error {
+	display:block;
+	float:right;
+	width:300px;
+	text-align:left;
+	padding-right:10px;
+	margin-bottom:5px;
+	color: #c60000;
+}
+
+.form input.error {
+	background-color: #c60000;
+}
+
+table.searchUser {
+	width:400px;
+}
+
+table.searchUser td {border:none;}
+
+table.searchUser td.label {
+	width:100px;
+	text-align:right;
+}

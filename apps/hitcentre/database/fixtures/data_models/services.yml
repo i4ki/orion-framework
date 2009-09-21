@@ -1,0 +1,9 @@
+Service:
+  Service_1:
+    name: Usuários
+  Service_2:
+    name: Escola
+  Service_3:
+    name: Financeiro
+  Service_4:
+    name: Portal

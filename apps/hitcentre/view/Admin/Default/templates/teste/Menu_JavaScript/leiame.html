@@ -1,0 +1,229 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Menu Drop-Down - Tutorial</title>
+<style type="text/css">
+<!--
+.style1 {color: #FF0000}
+-->
+</style>
+</head>
+
+<body>
+<h1>Menu Drop-Down - Tutorial</h1>
+<p>
+O menu drop-down foi criado utilizando marca&ccedil;&atilde;o XHTML para a estrutura, regras de estilos CSS para a apresenta&ccedil;ao e programa&ccedil;&atilde;o Javascript para torn&aacute;-lo din&acirc;mico. O menu drop-down &eacute; f&aacute;cil de editar e atualizar e funciona perfeitamente em variados tipos de browsers (Internet Explorer, Firefox, Opera e Safari).
+</p>
+<h2>Criando a estrutura - XHTML</h2>
+<p>
+O primeiro e mais importante passo na cria&ccedil;&atilde;o do menu &eacute; a defini&ccedil;&atilde;o da sua estrutura. A melhor maneira de se criar a estrutura &eacute; atrav&eacute;s de uma lista n&atilde;o ordenada, com cada um dos sub-menus constitu&iacute;dos por outra lista n&atilde;o ordenada dentro da primeira.
+</p>
+<h3>Passo 1 - criando a barra de menus</h3>
+<pre><code>
+&lt;ul&gt;
+  &lt;li&gt;Arquivo&lt;/li&gt;
+  &lt;li&gt;Editar&lt;/li&gt;
+  &lt;li&gt;Formatar&lt;/li&gt;
+  &lt;li&gt;Exibir&lt;/li&gt;
+  &lt;li&gt;Ajudar&lt;/li&gt;    
+&lt;/ul&gt;
+</code></pre>
+<h3>Passo 2 - criando os submenus</h3>
+<pre><code>
+&lt;ul&gt;
+  &lt;li&gt;Arquivo
+<span class="style1">    &lt;ul&gt;
+      &lt;li&gt;Novo&lt;/li&gt;
+      &lt;li&gt;Abrir&lt;/li&gt;
+      &lt;li&gt;Salvar&lt;/li&gt;
+      &lt;li&gt;Salvar como...&lt;/li&gt;
+    &lt;/ul&gt; 
+</span>  &lt;/li&gt;
+  &lt;li&gt;Editar
+<span class="style1">    &lt;ul&gt;
+      &lt;li&gt;Desfazer&lt;/li&gt;
+      &lt;li&gt;Recortar&lt;/li&gt;
+      &lt;li&gt;Copiar&lt;/li&gt;
+      &lt;li&gt;Colar&lt;/li&gt;
+      &lt;li&gt;Excluir&lt;/li&gt;      
+    &lt;/ul&gt; 
+</span>  &lt;/li&gt;
+  &lt;li&gt;Formatar
+<span class="style1">    &lt;ul&gt;
+      &lt;li&gt;Quebra de linha autom&aacute;tica&lt;/li&gt;
+      &lt;li&gt;Fonte...&lt;/li&gt;
+    &lt;/ul&gt;
+</span>  &lt;/li&gt;
+  &lt;li&gt;Exibir
+<span class="style1">    &lt;ul&gt;
+      &lt;li&gt;Barra de status&lt;/li&gt;
+    &lt;/ul&gt;
+</span>  &lt;/li&gt;
+  &lt;li&gt;Ajuda
+<span class="style1">    &lt;ul&gt;
+      &lt;li&gt;T&oacute;picos de ajuda&lt;/li&gt;
+    &lt;/ul&gt;
+</span>  &lt;/li&gt;    
+&lt;/ul&gt;
+</code></pre>
+<h3>Passo 3 - criando os links</h3>
+<pre><code>
+&lt;ul&gt;
+  &lt;li&gt;<span class="style1">&lt;a href="#"&gt;</span>Arquivo<span class="style1">&lt;/a&gt;</span>
+    &lt;ul&gt;
+      &lt;li&gt;<span class="style1">&lt;a href="#"&gt;</span>Novo<span class="style1">&lt;/a&gt;</span>&lt;/li&gt;
+      &lt;li&gt;<span class="style1">&lt;a href="#"&gt;</span>Abrir<span class="style1">&lt;/a&gt;</span>&lt;/li&gt;
+      &lt;li&gt;<span class="style1">&lt;a href="#"&gt;</span>Salvar<span class="style1">&lt;/a&gt;</span>&lt;/li&gt;
+      &lt;li&gt;<span class="style1">&lt;a href="#"&gt;</span>Salvar como...<span class="style1">&lt;/a&gt;</span>&lt;/li&gt;
+    &lt;/ul&gt; 
+  &lt;/li&gt;
+  &lt;li&gt;<span class="style1">&lt;a href="#"&gt;</span>Editar<span class="style1">&lt;/a&gt;</span>
+    &lt;ul&gt;
+      &lt;li&gt;<span class="style1">&lt;a href="#"&gt;</span>Desfazer<span class="style1">&lt;/a&gt;</span>&lt;/li&gt;
+      &lt;li&gt;<span class="style1">&lt;a href="#"&gt;</span>Recortar<span class="style1">&lt;/a&gt;</span>&lt;/li&gt;
+      &lt;li&gt;<span class="style1">&lt;a href="#"&gt;</span>Copiar<span class="style1">&lt;/a&gt;</span>&lt;/li&gt;
+      &lt;li&gt;<span class="style1">&lt;a href="#"&gt;</span>Colar<span class="style1">&lt;/a&gt;</span>&lt;/li&gt;
+      &lt;li&gt;<span class="style1">&lt;a href="#"&gt;</span>Excluir<span class="style1">&lt;/a&gt;</span>&lt;/li&gt;      
+    &lt;/ul&gt; 
+  &lt;/li&gt;
+  &lt;li&gt;<span class="style1">&lt;a href="#"&gt;</span>Formatar<span class="style1">&lt;/a&gt;</span>
+    &lt;ul&gt;
+      &lt;li&gt;<span class="style1">&lt;a href="#"&gt;</span>Quebra de linha autom&aacute;tica<span class="style1">&lt;/a&gt;</span>&lt;/li&gt;
+      &lt;li&gt;<span class="style1">&lt;a href="#"&gt;</span>Fonte...<span class="style1">&lt;/a&gt;</span>&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;<span class="style1">&lt;a href="#"&gt;</span>Exibir<span class="style1">&lt;/a&gt;</span>
+    &lt;ul&gt;
+      &lt;li&gt;<span class="style1">&lt;a href="#"&gt;</span>Barra de status<span class="style1">&lt;/a&gt;</span>&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;<span class="style1">&lt;a href="#"&gt;</span>Ajuda<span class="style1">&lt;/a&gt;</span>
+    &lt;ul&gt;
+      &lt;li&gt;<span class="style1">&lt;a href="#"&gt;</span>T&oacute;picos de ajuda<span class="style1">&lt;/a&gt;</span>&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;    
+&lt;/ul&gt;
+</code></pre>
+<h3>Passo 4 - definindo as classes</h3>
+<pre><code>
+&lt;ul <span class="style1">class="menubar"</span>&gt;
+  &lt;li <span class="style1">class="submenu"</span>&gt;&lt;a href="#"&gt;Arquivo&lt;/a&gt;
+    &lt;ul <span class="style1">class="menu"</span>&gt;
+      &lt;li <span class="style1">class="item"</span>&gt;&lt;a href="#"&gt;Novo&lt;/a&gt;&lt;/li&gt;
+      &lt;li <span class="style1">class="item"</span>&gt;&lt;a href="#"&gt;Abrir&lt;/a&gt;&lt;/li&gt;
+      &lt;li <span class="style1">class="item"</span>&gt;&lt;a href="#"&gt;Salvar&lt;/a&gt;&lt;/li&gt;
+      &lt;li <span class="style1">class="item"</span>&gt;&lt;a href="#"&gt;Salvar como...&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt; 
+  &lt;/li&gt;
+  &lt;li <span class="style1">class="submenu"</span>&gt;&lt;a href="#"&gt;Editar&lt;/a&gt;
+    &lt;ul <span class="style1">class="menu"</span>&gt;
+      &lt;li <span class="style1">class="item"</span>&gt;&lt;a href="#"&gt;Desfazer&lt;/a&gt;&lt;/li&gt;
+      &lt;li <span class="style1">class="item"</span>&gt;&lt;a href="#"&gt;Recortar&lt;/a&gt;&lt;/li&gt;
+      &lt;li <span class="style1">class="item"</span>&gt;&lt;a href="#"&gt;Copiar&lt;/a&gt;&lt;/li&gt;
+      &lt;li <span class="style1">class="item"</span>&gt;&lt;a href="#"&gt;Colar&lt;/a&gt;&lt;/li&gt;
+      &lt;li <span class="style1">class="item"</span>&gt;&lt;a href="#"&gt;Excluir&lt;/a&gt;&lt;/li&gt;      
+    &lt;/ul&gt; 
+  &lt;/li&gt;
+  &lt;li <span class="style1">class="submenu"</span>&gt;&lt;a href="#"&gt;Formatar&lt;/a&gt;
+    &lt;ul <span class="style1">class="menu"</span>&gt;
+      &lt;li <span class="style1">class="item"</span>&gt;&lt;a href="#"&gt;Quebra de linha autom&aacute;tica&lt;/a&gt;&lt;/li&gt;
+      &lt;li <span class="style1">class="item"</span>&gt;&lt;a href="#"&gt;Fonte...&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li <span class="style1">class="submenu"</span>&gt;&lt;a href="#"&gt;Exibir&lt;/a&gt;
+    &lt;ul <span class="style1">class="menu"</span>&gt;
+      &lt;li <span class="style1">class="item"</span>&gt;&lt;a href="#"&gt;Barra de status&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li <span class="style1">class="submenu"</span>&gt;&lt;a href="#"&gt;Ajuda&lt;/a&gt;
+    &lt;ul <span class="style1">class="menu"</span>&gt;
+      &lt;li <span class="style1">class="item"</span>&gt;&lt;a href="#"&gt;T&oacute;picos de ajuda&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;    
+&lt;/ul&gt;
+</code></pre>
+<h2>Alterando o visual (apresenta&ccedil;&atilde;o) - CSS</h2>
+<p>
+As regras CSS s&atilde;o as respons&aacute;veis por transformar as listas n&atilde;o ordenadas em uma apar&ecirc;ncia de menu atrav&eacute;s da cria&ccedil;&atilde;o de blocos, bordas, posicionamento e apar&ecirc;ncia, removendo as marcas (bullets) e a indenta&ccedil;&atilde;o pr&oacute;prias das listas.</p>
+<h3>Principais classes</h3>
+<p>
+<span class="style1">class ul.menubar</span> - Classe que define as propriedades da barra horizonal, posicionando o menu na margem superior esquerda da tela;<br />
+<br/>
+<span class="style1">class ul.menubar .submenu</span> - Classe que define o formato e a posição dos submenus (um ao lado do outro) - float: left;<br />
+<br/>
+<span class="style1">class ul.menubar .menu</span> - Classe que define a posição e a exibição do menu vertical (inicialmente eles não são exibidos) - dispaly: none;<br />
+<br/>
+<span class="style1">class ul.menu</span> - Classe que define o tamanho (largura - width: 150px) e a cor do menu vertical;<br />
+<br />
+<span class="style1">class ul.menu ul</span> - Classe que define o posicionamento do menu vertical em rela&ccedil;&atilde;o aos submenus, usando as propriedades  &ldquo;left&rdquo; e &ldquo;top&rdquo; posicionamos de modo absoluto cada sub-menu ao lado de seu item pai. A propriedade &ldquo;left&rdquo; tem o valor de 149px (1px menor que a largura dos itens do menu), isto faz com que os sub-menus transpassem o menu e em consequ&ecirc;ncia n&atilde;o apare&ccedil;a uma borda dupla;<br />
+<br />
+  <span class="style1">class ul.menu li</span> - Classe que define o posicionamento dos itens do menu vertical relativos ao submenu - position: relative;<br />
+  <br/>
+  <span class="style1">class ul.menu li.submenu</span> - Classe que define o tamanho (largura) e a posição do 3º nivel de menus;<br />
+  <br/>
+<span class="style1">class ul.menu li.submenu ul</span> - Classe que torna os sub-menus invisíveis inicialmente - display: none.<br />
+</p>
+<h3>Aten&ccedil;&atilde;o</h3>
+<p>
+A ordem das regras CSS n&atilde;o devem ser alteradas, pois, o Javascript no tempo de execu&ccedil;&atilde;o altera algumas de suas propriedades e a forma em que ele executa esta opera&ccedil;&atilde;o &eacute; atrav&eacute;s do indice das regras.</p>
+<h2>Tornando o menu dinâmico - Javascript</h2>
+<p>
+O Javascript &eacute; utilizado para tornar o menu dinâmico e garantir que funcionará bem na maioria dos browsers. As propriedades das classes que foram criadas na CSS s&atilde;o alteradas atrav&eacute;s do script, onde podem ser modificadas: cor de fundo, cor da fonte, cor da borda, cor da op&ccedil;&atilde;o selecionada, imagem de fundo, estilo da fonte e uso da borda.</p>
+<h3>Temas</h3>
+<p>Para facilitar o uso da biblioteca v&aacute;rios temas foram criados e est&atilde;o prontos para uso, bastando para isso passar o seu c&oacute;digo na chamada da fun&ccedil;&atilde;o no onload da p&aacute;gina HTML.</p>
+<p>Exemplo: &lt;body onload=&quot;menuDropDown(1)&gt;</p>
+<p>C&oacute;digos e temas:</p>
+<ul>
+  <li>1 - Preto - fundo: preto, sele&ccedil;&atilde;o: branco, cor fonte: cinza, cor fonte sele&ccedil;&atilde;o: preto;</li>
+  <li>2 - Branco - fundo: branco, sele&ccedil;&atilde;o: preto, cor fonte: cinza, cor fonte sele&ccedil;&atilde;o: branco;</li>
+  <li>3 - Azul - fundo: azul, sele&ccedil;&atilde;o: preto, cor fonte: branco, cor fonte sele&ccedil;&atilde;o: branco;</li>
+  <li>4 - Verde - fundo: verde, sele&ccedil;&atilde;o: preto, cor fonte: branco, cor fonte sele&ccedil;&atilde;o: branco;</li>
+  <li>5 - Vermelho - fundo: vermelho, sele&ccedil;&atilde;o: preto, cor fonte: branco, cor fonte sele&ccedil;&atilde;o: branco;</li>
+  <li>6 - Amarelo - fundo: amarelo, sele&ccedil;&atilde;o: preto, cor fonte: azul, cor fonte sele&ccedil;&atilde;o: cinza;</li>
+  <li>7 - Laranja - fundo: laranja claro, sele&ccedil;&atilde;o: laranja escuro, cor fonte: preto, cor fonte sele&ccedil;&atilde;o: azul;</li>
+  <li>8 - Marrom - fundo: marrom claro, sele&ccedil;&atilde;o: marrom escuro, cor fonte: branco, cor fonte sele&ccedil;&atilde;o: branco;</li>
+  <li>9 - Naval - fundo: azul claro, sele&ccedil;&atilde;o: azul escuro, cor fonte: preto, cor fonte sele&ccedil;&atilde;o: branco;</li>
+  <li>10 - Ouro - fundo: amarelo ouro, sele&ccedil;&atilde;o: marrom escuro, cor fonte: branco, cor fonte sele&ccedil;&atilde;o: preto;</li>
+  <li>11 - P&uacute;rpura - fundo: p&uacute;rpura, sele&ccedil;&atilde;o: azul escuro, cor fonte: branco, cor fonte sele&ccedil;&atilde;o: preto;</li>
+  <li>12 - Menu XP - fundo menubar: azul claro, sele&ccedil;&atilde;o menubar: cinza, fundo submenu: branco, sele&ccedil;&atilde;o submenu: azul escuro, cor fonte: preta, cor fonte sele&ccedil;&atilde;o: branco, sem bordas nos itens;</li>
+  <li>13 - Menu Office - fundo menubar: cinza, sele&ccedil;&atilde;o menubar: azul claro, fundo submenu: branco, sele&ccedil;&atilde;o submenu: azul claro, cor fonte: preta, cor fonte sele&ccedil;&atilde;o: preta, sem bordas no menubar, com bordas nos itens;</li>
+  <li>14 - Met&aacute;lico - fundo menubar: textura met&aacute;lica, fundo submenu: azul acizentado, sele&ccedil;&atilde;o submenu: cinza escuro, cor fonte: preta, cor fonte sele&ccedil;&atilde;o: branco, cor fonte sele&ccedil;&atilde;o submenu: azul;</li>
+  <li>15 - Menu Vista - fundo menubar: imagem, fundo submenu: azul acizentado, sele&ccedil;&atilde;o submenu: cinza escuro, cor fonte: preta, cor fonte sele&ccedil;&atilde;o: branco, cor fonte sele&ccedil;&atilde;o submenu: azul;</li>
+</ul>
+<h3>Testando o navegador</h3>
+<p>
+O menu drop-down foi criado para ter compatibilidade entre os principais navegadores utilizados na Web (IE, Firefox, Safari e Opera), essa identifica&ccedil;&atilde;o &eacute; realizada logo no in&iacute;cio da fun&ccedil;&atilde;o atrav&eacute;s dos m&eacute;todos <span class="style1">ducument.all</span> e <span class="style1">navigator.appName</span></p>
+
+<h3>Modificando a CSS</h3>
+<p>
+Para que o menu possua a apar&ecirc;ncia escolhida pelo tema a CSS deve ser modificada atrav&eacute;s do Javascript logo no carregamento da p&aacute;gina da seguinte forma:</p>
+<p class="style1"> document.styleSheets[0].cssRules[2].style.backgroundColor = cor_Menu_NaoAtiva; </p>
+<p>Explicando: A regra n&ordm; 2 da 1&ordf;  CSS associado a p&aacute;gina HTML a cor de fundo possuir&aacute; o valor da vari&aacute;vel cor_Menu_NaoAtiva.</p>
+<p class="style1"> document.styleSheets[0].cssRules[4].style.color = cor_Fonte_Menu_NaoAtiva; </p>
+<p>Explicando: A regra n&ordm; 4 da 1&ordf;  CSS associado a p&aacute;gina HTML a cor da fonte possuir&aacute; o valor da vari&aacute;vel cor_Fonte_Menu_NaoAtiva.</p>
+<p>Observa&ccedil;&otilde;es: 1 - As styleSheets e as cssRules come&ccedil;am com o &iacute;ndice 0; 2 - Para o navegador Internet Explorer a forma utilizada &eacute;        document.styleSheets[0]<span class="style1">.rules[4]</span>.style.color = cor_Fonte_Menu_NaoAtiva; no lugar de cssRules.</p>
+<h3>Controlando a exibição dos menus</h3>
+<p>A exibi&ccedil;&atilde;o da classe menu &eacute; controlada atrav&eacute;s das fun&ccedil;&otilde;es onmouseover() e onmouseout da seguinte forma:</p>
+<p> <span class="style1">navItems[i].onmouseover=function() {this.getElementsByTagName('ul')[0].style.display=&quot;block&quot;;}<br />
+  navItems[i].onmouseout=function() {this.getElementsByTagName('ul')[0].style.display=&quot;none&quot;;}</span><br />
+</p>
+<p>Quando o mouse estiver sobre a &quot;ul class menu&quot; o estilo display &eacute; alterado para &quot;block&quot; que corresponde a exibir o menu.<br />
+Quando o mouse sair desta &quot;ul class menu&quot; o estilo display &eacute; alterado para &quot;none&quot; que corresponde a ocultar o menu.</p>
+<h3>Criando novos temas</h3>
+<p>Para criar novos temas basta acresentar na estrutura de controle switch mais itens e identificar as vari&aacute;veis que ser&atilde;o alteradas.</p>
+<p>Exemplo: </p>
+<p class="style1"> case 20 : // roxo<br />
+cor_Menu_Ativa = '#9900CC';<br />
+cor_Menu_NaoAtiva = '#CC00FF'; <br />
+cor_Fonte_Menu_Ativa = '#000000';<br />
+cor_Fonte_Menu_NaoAtiva = '#FFFFFF';<br />
+cor_Submenu_Ativa = '#9900CC';<br />
+cor_Submenu_NaoAtiva = '#CC00FF';<br />
+cor_Fonte_Submenu_Ativa = '#000000';<br />
+cor_Fonte_Submenu_NaoAtiva = '#FFFFFF';<br />
+break</p>
+<p>Observa&ccedil;&atilde;o: Se nenhum valor for passado na chamada da fun&ccedil;&atilde;o o menu default (padr&atilde;o) &eacute; o menu com fundo branco.<br />
+</p>
+</body>
+</html>

@@ -1,0 +1,37 @@
+#adduser {
+	color: #375A90;
+}
+
+.tableAddUser {
+	width: 100%;
+	border:0;
+}
+
+.tableAddUser td {
+	border:0;
+}
+
+td.label {
+	width: 280px;
+	color:#000000;
+	padding:0;
+	margin:0;
+}
+
+.tbsecurity {
+	width:100%;
+	border:0;
+}
+
+.tbsecurity td {
+	border:0;
+}
+
+form.form label {
+	width:100%;
+	padding:0;
+}
+
+select {
+	width:100px;
+}

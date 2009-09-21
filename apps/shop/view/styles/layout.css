@@ -1,0 +1,61 @@
+/**
+ *
+ * Estilo do admin
+ *
+ * By Tiago Natel de Moura
+ */
+
+ body {
+	background-color: #FFFFFF;
+	font-family: "Helvetica, Arial Narrow, Arial, Verdana, sans-serif";
+
+ }
+
+ #main {
+ 	position: relative;
+ 	margin:0 auto;
+ 	width:800px;
+ 	min-height:600px;
+ 	border:1px solid red;
+ 	padding:5px;
+ }
+
+ #topo {
+ 	position:relative;
+ 	margin:0 auto;
+ 	width:800px;
+ 	height:120px;
+ 	border:1px solid #990000;
+ }
+
+ #menu {
+ 	position:relative;
+ 	background-color:#E8E8E8;
+ 	position:relative;
+ 	margin:0 auto;
+ 	height:25px;
+ 	z-index:1000;
+ }
+
+ #menu ul.menu_dropdown {
+ 	width:500px;
+ 	margin:0 auto;
+ }
+
+ #menu ul.menu {
+ 	width:100px;
+ }
+
+ .clear {
+ 	clear:both;
+ }
+
+ #conteudo {
+ 	position:relative;
+ 	margin:30px 20px 30px 20px;
+ }
+
+
+
+
+

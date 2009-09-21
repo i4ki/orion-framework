@@ -1,0 +1,30 @@
+User:
+        columns:
+                id:
+                        primary: true
+                        autoincrement: true
+                        type: integer(4)
+                username: string(255)
+                password: string(255)
+        relations:
+                Groups:
+                        class: Group
+                        refClass: UserGroup
+                        foreignAlias: Users
+Group:
+        tableName: groups
+        columns:
+                id:
+                        primary: true
+                        autoincrement: true
+                        type: integer(4)
+                name: string(255)
+UserGroup:
+        columns:
+                user_id: integer(4)
+                group_id: integer(4)
+        relations:
+                User:
+                        onDelete: CASCADE
+                Group:
+                        onDelete: CASCADE

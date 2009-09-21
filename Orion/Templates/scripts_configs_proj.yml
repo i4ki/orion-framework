@@ -1,0 +1,5 @@
+{project}:
+    dir_commands: 'commands'
+    database:
+        dir_database: 'database'
+        dir_models: 'models'

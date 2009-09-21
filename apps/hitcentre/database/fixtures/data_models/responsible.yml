@@ -1,0 +1,41 @@
+Responsible:
+  Responsible_1:
+    firstname: Eni
+    lastname: 'Dias de Moura'
+    cpf: 073.808.599-51
+    rg: '4996661'
+    civil_status: Solteiro
+    nationality: Brasileiro
+    tel_res: 47-33193288
+    tel_cel: 47-84273211
+    email_part: tiago_moura@live.com
+    email_pro: null
+    address: 'Rua Guilherme Blanco'
+    district: Centro
+    State: State_24
+    state_foreign: null
+    City: City_8332
+    city_foreign: null
+    Country: Country_76
+    created_at: '2009-08-30 05:53:58'
+    updated_at: '2009-08-30 05:53:58'
+  Responsible_2:
+    firstname: Pedro
+    lastname: Silva
+    cpf: 073.808.599-51
+    rg: '4965854'
+    civil_status: Solteiro
+    nationality: Brasileiro
+    tel_res: '4747474747'
+    tel_cel: '474747477'
+    email_part: tiago_moura@live.com
+    email_pro: null
+    address: 'Rua Guilherme Blanco'
+    district: Centro
+    State: State_26
+    state_foreign: null
+    City: City_9422
+    city_foreign: null
+    Country: Country_76
+    created_at: '2009-08-30 06:08:06'
+    updated_at: '2009-08-30 06:08:06'

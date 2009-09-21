@@ -1,0 +1,105 @@
+<!--
+* @package Menu Drop Down
+* @copyleft (cc) 2008 UNIFACS - Desenvolvimento Web Sites - Turma 04. Alguns direitos reservados
+* @licence http://www.gnu.org/licence/lgpl.html LGPL Licence
+* @author Marcelo Pereira Rodrigues - marcelo@alconta.com.br
+* @author Eduardo de Souza Santos - eduipd@yahoo.com.br
+* @author Alexandre Valverde - alexandre_valverde@hotmail.com
+* @author Danilo Pinheiro - pivamix@hotmail.com
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<meta name="description" content=" 
+@package Menu Drop Down
+@copyleft (cc) 2008 UNIFACS - Desenvolvimento Web - Turma 04. Alguns direitos reservados
+@LGPL Licence - GNU Lesser General Public Licence: http://gnu.org/licence/lgpl.html"  />
+<meta name="author" content="
+@author Marcelo Pereira Rodrigues - marcelo@alconta.com.br
+@author Eduardo de Souza Santos - eduipd@yahoo.com.br
+@author Alexandre Valverde - alexandre_valverde@hotmail.com
+@author Danilo Pinheiro - pivamix@hotmail.com"  />
+<link href="css/menu.css" rel="stylesheet" type="text/css" />
+<link href="css/pagina.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/menu.js"></script>
+<title>Menu Drop Down</title>
+</head>
+ <body onload="menuDropDown(4);">
+	              <!--
+Na classe submenu deverão ser informadas as opções do menu horizontal (barra de menu).
+Na classe menu deverão ser informadas as opções do menu vertical.
+Para inserir mais um nível deve-se alterar a classe "item" para "submenu" e adicionar outra lista de classe "menu" nela.
+--> 
+<ul id="menu_dropdown" class="menubar">
+   <li class="submenu"><a href="#">Cadastros</a>
+      <ul class="menu">   
+          <li class="item"><a href="#">Par&acirc;metros</a></li>
+          <li class="item"><a href="#">Bancos</a></li>
+          <li class="item"><a href="#">Plano de Contas</a></li>               
+          <li class="item"><a href="#">Hist&oacute;ricos</a></li>                              
+          <li class="item"><a href="#">Bens Patrimoniais</a></li>                                             
+          <li class="item"><a href="#">Licita&ccedil;&otilde;es</a></li>                                                       
+          <li class="item"><a href="#">Ve&iacute;culos</a></li>                                                       
+      </ul>
+  </li>
+   <li class="submenu"><a href="#">Planejamento</a>
+      <ul class="menu">
+        <li class="item"><a href="#">PPA</a></li>
+        <li class="item"><a href="#">LDO</a></li>        
+        <li class="item"><a href="#">LOA</a></li>
+      </ul>
+  </li>
+   <li class="submenu"><a href="#">Receitas</a>
+      <ul class="menu">
+        <li class="item"><a href="#">Receita Or&ccedil;ament&aacute;ria</a></li>
+        <li class="item"><a href="#">Receita Extra-Or&ccedil;ament&aacute;ria</a></li>        
+        <li class="item"><a href="#">Lan&ccedil;amento da Receita</a></li>
+        <li class="item"><a href="#">Receita Corrente L&iacute;quida</a></li>        
+      </ul>
+  </li>
+   <li class="submenu"><a href="#">Despesas</a>
+      <ul class="menu">
+        <li class="item"><a href="#">Despesa Orcament&aacute;ria</a></li>
+        <li class="item"><a href="#">Dota&ccedil;&otilde;es Orçament&aacute;rias</a></li>        
+        <li class="item"><a href="#">Despesa Extra-or&ccedil;ament&aacute;ria</a></li>        
+        <li class="submenu"><a href="#">Empenhos</a>
+           <ul class="menu">
+               <li class="item"><a href="#">Ordinário</a></li>
+               <li class="item"><a href="#">Global</a></li>
+               <li class="item"><a href="#">Estimativa</a></li>               
+               <li class="item"><a href="#">Refor&ccedil;o</a></li>                              
+               <li class="item"><a href="#">Anula&ccedil;&atilde;o</a></li>                                             
+           </ul>        
+        </li>
+        <li class="submenu"><a href="#">Cr&eacute;ditos Adicionais</a>
+           <ul class="menu">
+               <li class="item"><a href="#">Suplementares</a></li>
+               <li class="item"><a href="#">Especiais</a></li>
+               <li class="item"><a href="#">Extraordin&aacute;rios</a></li>               
+           </ul>                
+        </li>        
+      </ul>
+  </li>
+   <li class="submenu"><a href="#">Consultas</a></li>
+   <li class="submenu"><a href="#">Relat&oacute;rios</a></li>
+   <li class="submenu"><a href="#">Downloads</a>   
+      <ul class="menu">
+        <li class="item"><a href="Menu_JavaScript.zip">Menu Drop Down</a></li>
+        <li class="item"><a href="Menu_JavaScript_Completo.zip">Página Menu Drop Down</a></li>
+      </ul>
+  </li>
+   <li class="submenu"><a href="#">Exemplos</a>
+      <ul class="menu">
+          <li class="item"><a href="menu_exemplo_01.html">Exemplo 01</a></li>
+          <li class="item"><a href="menu_exemplo_02.html">Exemplo 02</a></li>
+          <li class="item"><a href="menu_exemplo_03.html">Exemplo 03</a></li>
+          <li class="item"><a href="index.html">Principal</a></li>
+          <li class="item"><a href="menu.html">Menu Original</a></li>
+      </ul>
+  </li>
+   <li class="submenu"><a href="leiame.html">Tutorial</a></li>
+</ul>
+              
+</body>
+</html>
