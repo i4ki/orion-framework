@@ -562,8 +562,22 @@ final class Orion
 	 * @name	getPathIndex
 	 * @param	void
 	 * @return	string
+	 * @deprecated 	@see Orion::getPathOrion()
 	 */	
 	public static function getPathIndex()
+	{
+		return dirname(__FILE__);
+	}
+	
+	/**
+	 * This method is an alias to Orion::getPathIndex()
+	 * @class	Orion
+	 * @scope	public
+	 * @name	getPathOrion
+	 * @param	void
+	 * @return	string
+	 */
+	public static function getPathOrion()
 	{
 		return dirname(__FILE__);
 	}
