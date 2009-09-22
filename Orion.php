@@ -124,12 +124,15 @@ final class Orion
 	const ATTR_DIR_DATABASE			= 107;
 	const ATTR_DIR_SCRIPTS			= 108;
 	const ATTR_DIR_TESTS			= 109;
+	const ATTR_DIR_CACHE			= 110;
+	const ATTR_DIR_TEMP				= 111;
 	
 	const ATTR_DEBUG				= 120;
 	
 	/**
 	 * Constante => String
 	 * @var array	$_const_string
+	 * @deprecated 	Problems with performance
 	 */
 	public static $_const_string = array(
 		'factory_url'			=> 'ATTR_FACTORY_URL',
@@ -345,9 +348,11 @@ final class Orion
 			self::ATTR_DIR_LIBS				=> 'libs',
 			self::ATTR_DIR_SCRIPTS			=> 'scripts',
 			self::ATTR_DIR_TESTS			=> 'tests',
-			self::ATTR_DIR_LOGS				=> $_SERVER['DOCUMENT_ROOT'] . DIRECTORY_SEPARATOR . 'tmp' . DIRECTORY_SEPARATOR,
+			self::ATTR_DIR_LOGS				=> 'logs',
+			self::ATTR_DIR_CACHE			=> 'cache',
+			self::ATTR_DIR_TEMP				=> 'temp',
 			self::ATTR_DIR_VIEW				=> 'view',
-			self::ATTR_HOST					=> 'http://localhost/Orion/',
+			self::ATTR_HOST					=> 'http://localhost:8080',
 			self::ATTR_FACTORY_URL 			=> self::ATTR_FACTORY_URL_DEFAULT,
 			self::ATTR_FORMAT_CLASS_COMMAND	=> '%sCommand',
 			self::ATTR_CHARSET_HTML			=> 'utf-8',
