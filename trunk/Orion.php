@@ -207,9 +207,9 @@ final class Orion
 	 * substituir no source alguns comentários chave pelo código do debug.
 	 * Para retirar o código do debug?? # debug -u Orion.php  ^ ^
 	 */
-	public static $debugging = true;
+	public static $debugging = false;
 	
-	public static $_;
+	public $_performance = 0;
 	
 	/**
 	 * @class	Orion
@@ -221,48 +221,6 @@ final class Orion
 	private function __construct() 
 	{
 		/** TODO : This is the border of the nebula. */
-		
-		self::$_ = create_function('$opt = NULL', 
-			'
-				class Microtime
-				{
-					public $init 	= 0;
-					public $end 	= 0;
-					
-					public function __construct()
-					{
-					
-					}
-					
-					public function getTime()
-					{
-						$time 	= microtime(true);
-						$time 	= explode(" ", $time);
-						$sec 	= $time[1];
-						$msec 	= $time[0];
-						return ($sec + $msec);
-					}
-					
-					public function init()
-					{
-						$this->init = $this->getTime();
-						return $this;
-					}
-					
-					public function end()
-					{
-						$this->end = $this->getTime();
-						return $this;
-					}
-					
-					public function diff()
-					{
-						return ($this->end - $this->init); 
-					}
-				}
-				$msec = new Microtime();
-				return $msec;
-			');
 		
 		$this->_init();	
 		$this->setDefaultAttributes( $this->_defaults );
@@ -376,6 +334,9 @@ final class Orion
 		if( ! class_exists('OrionKernel') )
 			$this->registerOrionAutoload();
 		
+		$this->_performance = new OrionTime();
+		$this->_performance->init();
+		
 		$this->_defaults = array(
 			self::ATTR_ENV					=> self::ATTR_ENV_DEV,
 			self::ATTR_DIR_APPS				=> 'apps',
@@ -388,10 +349,6 @@ final class Orion
 			self::ATTR_DIR_VIEW				=> 'view',
 			self::ATTR_HOST					=> 'http://localhost/Orion/',
 			self::ATTR_FACTORY_URL 			=> self::ATTR_FACTORY_URL_DEFAULT,
-			self::ATTR_CRUD_C				=> 'create',
-			self::ATTR_CRUD_R				=> 'retrieve',
-			self::ATTR_CRUD_U				=> 'update',
-			self::ATTR_CRUD_D				=> 'delete',
 			self::ATTR_FORMAT_CLASS_COMMAND	=> '%sCommand',
 			self::ATTR_CHARSET_HTML			=> 'utf-8',
 			self::ATTR_CHARSET_DB_DEV		=> 'utf8',
@@ -652,6 +609,20 @@ final class Orion
 	/**
 	 * @class	Orion
 	 * @scope	public
+	 * @name	getDomain
+	 * @param	void
+	 * @return	string
+	 */
+	public static function getDomain()
+	{
+		return OrionKernel::$_env->_attributes[self::ATTR_HOST] . 
+			( 
+				!preg_match('/\/$/',OrionKernel::$_env->_attributes[self::ATTR_HOST]) ? '/' : '' 
+			);
+	}
+	/**
+	 * @class	Orion
+	 * @scope	public
 	 * @name	getFormatedClassCommand
 	 * @param	string	$action
 	 * @return	string
@@ -719,6 +690,8 @@ final class Orion
 			$this->setAttribute( Orion::ATTR_DIR_TESTS, $_config['directory']['tests'] );
 		if(!empty($_config['directory']['view']))
 			$this->setAttribute( Orion::ATTR_DIR_VIEW, $_config['directory']['view'] );
+		if(!empty($_config['directory']['logs']))
+			$this->setAttribute( Orion::ATTR_DIR_LOGS, $_config['directory']['logs'] );
 		
 		/** system_url */
 		if(!empty($_config['system_url']['factory_url']))
@@ -824,6 +797,16 @@ final class Orion
 	{
 		return $property;
 	}
+	
+	public function __destruct()
+	{
+		/**
+		 * 
+		 *	$this->_performance = $this->performance->diff();
+		 * 	if($this->debugging == true)
+		 *		prin $this->_performance;
+		 */
+	}	
 
 }
 
