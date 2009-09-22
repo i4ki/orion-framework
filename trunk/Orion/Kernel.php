@@ -81,8 +81,16 @@ class OrionKernel
 		self::$_env = OrionCommand_Settings_Environment::getInstance();
 	}
 
+	/**
+	 * @class	Orion
+	 * @scope	public
+	 * @name	init
+	 * @param	void
+	 * @return	OBJECT
+	 */
 	public function init()
 	{
+		$this->_init();
 		/**
 		 * TODO : Inclui o arquivo do Command e instancia a classe correspondente
 		 */
@@ -90,6 +98,44 @@ class OrionKernel
 		$_factory	->createCommand($this->configCommand())
 					->execute();
 		return $this;
+	}
+	
+	/**
+	 * @class	Orion
+	 * @scope	public
+	 * @name	_init
+	 * @param	void
+	 * @return	OBJECT
+	 */
+	private function _init()
+	{
+		self::checkPermissions();
+		return $this;
+	}
+	
+	/**
+	 * @class	Orion
+	 * @scope	public
+	 * @name	checkPermissions
+	 * @param	void
+	 * @return	OBJECT
+	 */
+	public static function checkPermissions()
+	{
+		$dirs = array(
+			Orion::getAttribute(Orion::ATTR_DIR_LOGS),
+			Orion::getAttribute(Orion::ATTR_DIR_CACHE),
+			Orion::getAttribute(Orion::ATTR_DIR_TEMP)
+		);
+		
+		foreach( $dirs as $dir )
+		{
+			if(!preg_match('/^\//', $dir))
+				$dir = Orion::getPathOrion() . DIRECTORY_SEPARATOR . $dir;
+			if(!is_writable($dir))
+				throw new OrionException(sprintf("O arquivo %s deve ter permissão de escrita.", $dir));
+		}
+		return true;	
 	}
 
 	/**
@@ -106,7 +152,7 @@ class OrionKernel
 		elseif (self::$_env->_attributes[Orion::ATTR_FACTORY_URL] == Orion::ATTR_FACTORY_URL_DEFAULT)
 			$this->commandInfo = new OrionCommand_Info_Default();
 		else 
-			throw new Exception_C0D3("Ajuste corretamente o sistema de URL'");
+			throw new OrionException("Ajuste corretamente o sistema de URL'");
 
 		return $this->commandInfo;
 	}
