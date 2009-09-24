@@ -1,0 +1,69 @@
+#
+#
+#    This library is free software; you can redistribute it and/or
+#    modify it under the terms of the GNU Library General Public
+#    License version 2 as published by the Free Software Foundation.
+#
+#    This library is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+#    Library General Public License for more details.
+#
+#    You should have received a copy of the GNU Library General Public License
+#    along with this library; see the file COPYING.LIB.  If not, write to
+#    the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+#    Boston, MA 02110-1301, USA.
+#
+#    ---
+#    Copyright (C) 2009, Tiago Natel de Moura tiago_moura@live.com
+#
+
+#
+# Orion
+# Alias para atributos de configuração do Orion
+#
+# @package     Orion
+# @author      Tiago Moura <tiago_moura@live.com>
+# @license     http://www.opensource.org/licenses/lgpl-license.php LGPL
+# @link        www.orion-framework.org
+# @since       1.0
+# @version     $Revision: 1 $
+#
+ATTR_PROJECT: [project]
+ATTR_FACTORY_URL: factory_url
+ATTR_FACTORY_URL_DEFAULT: [default, url-default, url_default]
+ATTR_FACTORY_URL_FRIENDLY: [friendly, amigavel, mod_rewrite, mod-rewrite]
+ATTR_ENV: [environment, env, ambiente]
+ATTR_ENV_DEV: [development, dev, env_dev, desenvolvimento]
+ATTR_ENV_TEST: [test, env_test, teste]
+ATTR_ENV_PROD: [production, prod, env_prod, producao]
+ATTR_CRUD_C: [crud_c, crud_create]
+ATTR_CRUD_R: [crud_r, crud_retrieve]
+ATTR_CRUD_U: [crud_u, crud_update]
+ATTR_CRUD_D: [crud_d, crud_delete]
+ATTR_FORMAT_CLASS_COMMAND: [format_class_command]
+ATTR_CHARSET_HTML: [charset_html]
+ATTR_CHARSET_DB_DEV: [charset_db_dev]
+ATTR_CHARSET_DB_TEST: [charset_db_test]
+ATTR_CHARSET_DB_PROD: [charset_db_prod]
+ATTR_COLLATE_DB_DEV: [collate_db_dev]
+ATTR_COLLATE_DB_TEST: [collate_db_test]
+ATTR_COLLATE_DB_PROD: [collate_db_prod]
+ATTR_HOST_DB_DEV: [host_db_dev]
+ATTR_HOST_DB_TEST: [host_db_test]
+ATTR_HOST_DB_PROD: [host_db_prod]
+ATTR_USER_DB_DEV: [user_db_dev, user_dev]
+ATTR_USER_DB_TEST: [user_db_test, user_test]
+ATTR_USER_DB_PROD: [user_db_prod, user_prod]
+ATTR_PASS_DB_DEV: [pass_db_dev, pass_dev]
+ATTR_PASS_DB_TEST: [pass_db_test, pass_test]
+ATTR_PASS_DB_PROD: [pass_db_prod, pass_prod]
+ATTR_DATABASE_DEV: [database_dev]
+ATTR_DATABASE_TEST: [database_test]
+ATTR_DATABASE_PROD: [database_prod]
+ATTR_ADAPTER_DEV: [adapter_dev]
+ATTR_ADAPTER_TEST: [adapter_test]
+ATTR_ADAPTER_PROD: [adapter_prod]
+ATTR_ADAPTER_ENGINE_DEV: [adapter_engine_dev, engine_dev]
+ATTR_ADAPTER_ENGINE_TEST: [adapter_engine_test, engine_test]
+ATTR_ADAPTER_ENGINE_PROD: [adapter_engine_prod, engine_prod]

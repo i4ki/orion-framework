@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projeto name="orion" class="erros-default">
+	<erro codigo="1">
+		<msg>Use *::getInstance() para pegar a instancia dessa classe</msg>
+	</erro>
+	<erro codigo="2">
+		<msg>A classe não foi encontrada, verifique se esta classe está devidamente registrada na spl</msg>
+	</erro>
+	<erro codigo="602">
+		<msg>Problema com a query SQL</msg>
+	</erro>
+</projeto>

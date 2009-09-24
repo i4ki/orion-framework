@@ -1,0 +1,21 @@
+#	Configurações para os scripts
+directories:
+    dir_commands: 'commands'
+    database:
+        dir_database: 'database'
+        dir_models: 'models'
+        dir_fixtures: 'fixtures'
+        dir_sql: 'sql'
+    libs:
+        dir_libs: 'libs'
+        dir_universal: 'universal'
+    dir_scripts: 'scripts'
+    dir_tests: 'tests'
+    dir_view: 'view'
+
+configuration_files:
+    config: 'config.yml'
+
+objectModels: 'Orion/ORM/ObjectModels'
+behaviors: 'Orion/ORM/Behaviors'
+
