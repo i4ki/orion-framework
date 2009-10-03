@@ -32,23 +32,18 @@
  * @version     $Revision: 1 $
  */
 
- class OrionException_PageNotFound extends Exception {
+ class OrionException_PageNotFound extends OrionException {
  	// Recebe obrigatoriamente a mensagem e o código do erro pode ser omitido
- 	public function __construct( $mensagem, $codigo=0 ) 
+ 	public function __construct( $mensagem, $module, $action ) 
 	{
-		if( Orion::getAttribute( Orion::ATTR_FACTORY_URL ) == Orion::ATTR_FACTORY_URL_DEFAULT )
+		if( Orion::getAttribute( Orion::ATTR_URL_MODE ) == Orion::ATTR_URL_MODE_DEFAULT )
 			$info = new OrionCommand_Info_Default();
 		else
 			$info = new OrionCommand_Info_Rewrite();
 		
-		if( class_exists('Exception_'.$info->getAction().'_PageNotFound') )
-		{
-			$exception = 'Exception_'.$info->getAction() . '_PageNotFound'; 
-			throw new $exception($mensagem, $codigo);
-		}
 		OrionTools_Geral::setHeader();
  		if( Orion::getAttribute(Orion::ATTR_ENV) == Orion::ATTR_ENV_DEV )
-			parent::__construct( $mensagem, $codigo );
+			parent::__construct( $mensagem, OrionError::PAGE_NOT_FOUND );
 		
  	}
 

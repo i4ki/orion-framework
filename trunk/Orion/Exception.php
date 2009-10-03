@@ -20,7 +20,7 @@
 
 /**
  * Orion
- * {info}
+ * OrionException
  *
  * @package     Orion
  * @author      Tiago Moura <tiago_moura@live.com>
@@ -32,24 +32,48 @@
 
 class OrionException extends Exception
 {
-	public $message;
- 	public $code;
- 	public $erro;
+	protected $message;
+	protected $string;
+ 	protected $erro;
+	protected $extra = array();
+	protected $solve = array();
 
-	public function __construct($message, $code = 0) {
+	public function __construct($message, $code = 0, $extra = array()) 
+	{
 		$this->message = $message;
 		$this->code = $code;
-
+		$this->extra = $extra;
+		
 		parent::__construct($this->message,$this->code);
-		$this->tabelaMensagem();
+		$this->getSolution();
+	}
+	
+	public function getEnvMessage()
+	{
+		switch(Orion::getAttribute(Orion::ATTR_ENV))
+		{
+			case Orion::ATTR_ENV_DEV:
+				$this->getDebuggingInfo();
+				break;
+			case Orion::ATTR_ENV_TEST:
+				$this->getDebuggingInfo();
+				break;
+			case Orion::ATTR_ENV_PROD:
+				$this->getMessage();
+				break;
+			default:
+				$this->getMessage();
+		}
+		
+		return true;
 	}
 
-	public function tabelaMensagem() {
+	public function getDebuggingInfo() {
 		print "<html>\n";
 		print "<head>\n";
 		print "<title>Error</title>\n";
 		print "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\"/>\n";
-		print "<script type=\"text/javascript\" src=\"".self::getPath() . "Orion/Exception/View/jquery.js\"></script>\n";
+		print "<script type=\"text/javascript\" src=\"".Orion::getProjectURL() . "/dev/view/js/jquery.js\"></script>\n";
 		print "<script type=\"text/javascript\">\n";
 		print "\$(document).ready(function() {\n";
 		print "\$(\"#trace\").hide();\n";
@@ -86,7 +110,7 @@ class OrionException extends Exception
 		print "<th class=\"code\">Cod. Erro</th><th class=\"msg\">Mensagem</th><th class=\"solucao\">Possivel solu&ccedil;&atilde;o</th>";
 		print "</tr>\n";
 		print "<tr>\n";
-		print "<td style=\"padding-left:5px;padding-right:5px;\">".$this->code."</td><td style=\"padding-left:5px;padding-right:5px;\">".$this->message."</td><td style=\"padding-left:5px;padding-right:5px;\">".$this->solucao($this->code)."</td>\n";
+		print "<td style=\"padding-left:5px;padding-right:5px;\">".$this->code."</td><td style=\"padding-left:5px;padding-right:5px;\">".$this->message."</td><td style=\"padding-left:5px;padding-right:5px;\">".$this->solve['msg']."</td>\n";
 		print "</tr>\n";
 		print "</table>\n";
 		print "<br />";
@@ -94,14 +118,17 @@ class OrionException extends Exception
 		print "<div id=\"trace\" name=\"trace\">\n";
 		print "<pre>";
 		print "<table class=\"tbTrace\" id=\"tbTrace\">\n";
-			print "<tr><th class=\"linha\">Linha</th><th class=\"arquivo\">Arquivo</th><th class=\"classe\">Classe</th><th class=\"funcao\">fun&ccedil;&atilde;o</th><th class=\"type\">Type</th><th class=\"param\">Parametros</th></tr>";
+			print "<tr><th class=\"linha\">Linha</th><th class=\"arquivo\">Arquivo</th><th class=\"classe\">Classe</th><th class=\"funcao\">fun&ccedil;&atilde;o</th><th class=\"type\">Type</th><th class=\"param\">Argumentos</th></tr>";
 
 			$trace = array();
 			$trace = $this->getTrace();
 			for($i=0;$i<count($trace);$i++) {
 
 			$param = "";
-			for($j = 0;$j < count($trace[$i]['args']);$j++) $param .= $trace[$i]['args'][$j] . ", ";
+			for($j = 0;$j < count($trace[$i]['args']);$j++) 
+				$param .= 	is_array($trace[$i]['args'][$j]) ? 
+							var_export($trace[$i]['args'][$j], true) : 
+							$trace[$i]['args'][$j] . ", ";
 
 			print "<tr><td>".$trace[$i]['line']."</td><td>".$trace[$i]['file']."</td><td>".$trace[$i]['class']."</td><td>".$trace[$i]['function']."</td><td>".$trace[$i]['type']."</td><td>".$param."</td></tr>";
 			}
@@ -113,15 +140,9 @@ class OrionException extends Exception
 		print "</html>\n";
 	}
 
-	public function solucao($code) {
-		$this->erro = new OrionException_Erros($this->code);
-		$this->erro->lerXML();
-		return utf8_encode($this->erro->getMsg($code));
-	}
-	
-	public static function getPath()
-	{
-		return 	'http://' . $_SERVER['HTTP_HOST'] . 
-				dirname(str_replace($_SERVER['DOCUMENT_ROOT'],'', $_SERVER['SCRIPT_FILENAME'])) . DIRECTORY_SEPARATOR;
+	public function getSolution() {
+		$this->erro = new OrionException_Error($this->code);
+		$this->solve = $this->erro->getSolve();
+		return $this->solve;
 	}
 }

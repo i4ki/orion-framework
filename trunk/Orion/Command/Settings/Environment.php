@@ -20,7 +20,7 @@
 
 /**
  * Orion
- * Base do Orion - Faz a comunicação entre o cliente e o Kernel
+ * OrionCommand_Settings_Environment
  *
  * @package     Orion
  * @subpackage 	Command/Settings
@@ -30,8 +30,9 @@
  * @since       1.0
  * @version     $Revision: 1 $
  */
-class OrionCommand_Settings_Environment 
-	implements IteratorAggregate
+class OrionCommand_Settings_Environment
+	extends OrionCommand_Settings 
+		implements IteratorAggregate
 {
 	/**
 	* TODO 	Array de configurações do Framework
@@ -41,9 +42,9 @@ class OrionCommand_Settings_Environment
 	public $_attributes 	= array();
 	public $_urls			= array();
 
-	private function __construct()
+	protected function __construct()
 	{
-	
+		parent::__construct();
 	}
 
 	/**
