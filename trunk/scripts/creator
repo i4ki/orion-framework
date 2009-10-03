@@ -1,6 +1,6 @@
 #!/usr/bin/env php
 <?php
-require("Orion.php");
+require(dirname(dirname(__FILE__)) . DIRECTORY_SEPARATOR . "Orion.php");
 
 $argc = $_SERVER['argc'];
 $argv = $_SERVER['argv'];
