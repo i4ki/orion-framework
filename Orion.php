@@ -31,7 +31,7 @@
  */
 final class Orion
 {
-	const VERSION					= 0.2;
+	const VERSION					= 0.3;
 	const SITE						= 'www.orion-framework.org';
 	const AUTHOR_EMAIL				= 'tiago_moura@live.com';
 	
@@ -39,9 +39,9 @@ final class Orion
 	 * Constantes de configuração
 	 */
 	const ATTR_PROJECT				= 0;
-	const ATTR_FACTORY_URL			= 1;
-	const ATTR_FACTORY_URL_DEFAULT 	= 2;
-	const ATTR_FACTORY_URL_FRIENDLY = 3;
+	const ATTR_URL_MODE				= 1;
+	const ATTR_URL_MODE_DEFAULT		= 2;
+	const ATTR_URL_MODE_REWRITE		= 3;
 	const ATTR_CHARSET_HTML			= 4;
 	const ATTR_HOST					= 5;
 	const ATTR_ENV					= 6;
@@ -49,7 +49,7 @@ final class Orion
 	const ATTR_ENV_TEST				= 8;
 	const ATTR_ENV_PROD				= 9;
 	const ATTR_SPECIAL_ULTIMATE_X9	= 10;
-	const ATTR_SOBRA1				= 11;
+	const ATTR_LANG					= 11;
 	const ATTR_SOBRA2				= 12;
 	const ATTR_SOBRA3				= 13;
 	const ATTR_SOBRA4				= 14;
@@ -108,14 +108,22 @@ final class Orion
 	 * Constantes da VIEW
 	 */
 	const ATTR_VIEW_TEMPLATE_LIB	= 90;
-	const ATTR_VIEW_TEPLATE_CLASS	= 91;
-	const ATTR_VIEW_TEPLATE_AUTOLOAD= 92;
-	const ATTR_VIEW_PAGE_404		= 93;
+	const ATTR_VIEW_TEMPLATE_CLASS	= 91;
+	const ATTR_VIEW_TEMPLATE_AUTOLOAD= 92;
+	const ATTR_VIEW_PAGE_401		= 93;
+	const ATTR_VIEW_PAGE_402		= 94;
+	const ATTR_VIEW_PAGE_403		= 95;
+	const ATTR_VIEW_PAGE_404		= 96;
 	
 	/**
 	 * Constantes de diretórios
 	 */
 	const ATTR_DIR_LIBS				= 101;
+	/**
+	 * @var 	ATTR_DIR_APPS
+	 * @deprecated
+	 * @see 	Orion::ATTR_DIR_PROJECT
+	 */
 	const ATTR_DIR_APPS				= 102;
 	const ATTR_DIR_LOGS				= 103;
 	const ATTR_DIR_VIEW				= 104;
@@ -126,6 +134,9 @@ final class Orion
 	const ATTR_DIR_TESTS			= 109;
 	const ATTR_DIR_CACHE			= 110;
 	const ATTR_DIR_TEMP				= 111;
+	const ATTR_DIR_CACHE_HTML		= 112;
+	const ATTR_DIR_UNIVERSE			= 113;
+	
 	
 	const ATTR_DEBUG				= 120;
 	
@@ -199,6 +210,8 @@ final class Orion
 	 */
 	public static $_kern;
 	
+	public $organizer;
+	
 	/**
 	 * Debugging ??
 	 * Isto ainda não foi implementado, mas será de uma maneira 
@@ -259,7 +272,8 @@ final class Orion
 		if( $classname == 'Orion' )
 			$file = __FILE__;
 		
-		elseif( preg_match('/^Orion/', $classname) == 1 ) {
+		elseif( preg_match('/^Orion/', $classname) == 1 ) 
+		{
 			/**
 			* As classes do Orion iniciam com "Orion" seguido do caminho de diretórios
 			* em que ela se encontra.
@@ -269,16 +283,27 @@ final class Orion
 			$arq = preg_replace('/^Orion/','', $classname);
 					
 			$file = self::getPath() . DIRECTORY_SEPARATOR . implode(DIRECTORY_SEPARATOR,explode('_',$arq)).'.php';
-		} else
+		} elseif(file_exists(	OrionKernel::$organizer->getPathLibs() . DIRECTORY_SEPARATOR .  
+								implode(DIRECTORY_SEPARATOR,explode('_',$classname)).'.php'
+							)
+		)
+		{
 			/**
 			 * Se não for uma classe Orion, deve procurar no seu diretório de bibliotecas
 			 */
-			 $file = 	dirname(__FILE__) . DIRECTORY_SEPARATOR . 
-						self::getAttribute(Orion::ATTR_DIR_APPS) . DIRECTORY_SEPARATOR .
-						self::getAttribute(Orion::ATTR_PROJECT) . DIRECTORY_SEPARATOR . 
-						self::getAttribute(Orion::ATTR_DIR_LIBS) . DIRECTORY_SEPARATOR . 
+			 $file = 	OrionKernel::$organizer->getPathLibs() . DIRECTORY_SEPARATOR .  
 						implode(DIRECTORY_SEPARATOR,explode('_',$classname)).'.php';
-						
+			
+		} else {
+			$dir_uni = Orion::getAttribute(Orion::ATTR_DIR_UNIVERSE);
+			
+			if(!preg_match('/^\//',$dir_uni))
+				$dir_uni = Orion::getAttribute(Orion::ATTR_DIR_PROJECT) . DIRECTORY_SEPARATOR . $dir_uni; 
+			
+			$file = $dir_uni . DIRECTORY_SEPARATOR . 
+					implode(DIRECTORY_SEPARATOR,explode('_',$classname)).'.php';
+		}
+		
 		if( file_exists($file) )
 			require_once($file);
 		
@@ -296,10 +321,24 @@ final class Orion
 	 {
 		$project = is_array($configs) ? $configs['project'] : $configs;
 		$this->setAttribute(Orion::ATTR_PROJECT, $project);
-
-		$_yml_config = Orion::getPathIndex() . DIRECTORY_SEPARATOR . 'apps' . DIRECTORY_SEPARATOR . $project . DIRECTORY_SEPARATOR . 'config.yml';
-		if(file_exists($_yml_config))
-			$this->loadYmlConfig( $_yml_config );
+		
+		if(is_array($configs) && !empty($configs['path_project']))
+			$_yml_config = 	$configs['path_project'] . DIRECTORY_SEPARATOR . 
+							'config.yml';
+		elseif(file_exists(	Orion::getDfPathProjects() . DIRECTORY_SEPARATOR . 
+							$project . DIRECTORY_SEPARATOR . 
+							'config.yml'
+		))
+				$_yml_config = 	Orion::getDfPathProjects() . DIRECTORY_SEPARATOR . 
+								$project . DIRECTORY_SEPARATOR . 
+								'config.yml';
+		else
+			throw new OrionException("Arquivo de configuração de projeto não encontrado.", OrionError::FILE_NOT_EXISTS);
+			
+		if(!empty($configs['path_project']))
+			$this->setAttribute(Orion::ATTR_DIR_PROJECT, $configs['path_project']);
+		
+		$this->loadYmlConfig($_yml_config);
 		
 		if	(is_array($configs))
 			foreach( $configs as $attr => $value )
@@ -309,6 +348,7 @@ final class Orion
 					if($attr == 'library')
 						$this->setLibraries( $value[0], $value[1], $value[2] );
 		
+		
 		/**
 		 * registra o autoload do ORM
 		 */		
@@ -316,6 +356,7 @@ final class Orion
 								self::getAttribute(Orion::ATTR_ORM_CLASS),
 								self::getAttribute(Orion::ATTR_ORM_AUTOLOAD)
 							);
+		
 		self::$_kern->init();
 		
 		return $this;
@@ -337,63 +378,23 @@ final class Orion
 		if( ! class_exists('OrionKernel') )
 			$this->registerOrionAutoload();
 		
-		$this->_performance = new OrionTime();
-		$this->_performance->init();
-		
-		$this->_defaults = array(
-			self::ATTR_ENV					=> self::ATTR_ENV_DEV,
-			self::ATTR_DIR_APPS				=> 'apps',
-			self::ATTR_DIR_COMMANDS			=> 'commands',
-			self::ATTR_DIR_DATABASE			=> 'database',
-			self::ATTR_DIR_LIBS				=> 'libs',
-			self::ATTR_DIR_SCRIPTS			=> 'scripts',
-			self::ATTR_DIR_TESTS			=> 'tests',
-			self::ATTR_DIR_LOGS				=> 'logs',
-			self::ATTR_DIR_CACHE			=> 'cache',
-			self::ATTR_DIR_TEMP				=> 'temp',
-			self::ATTR_DIR_VIEW				=> 'view',
-			self::ATTR_HOST					=> 'http://localhost:8080',
-			self::ATTR_FACTORY_URL 			=> self::ATTR_FACTORY_URL_DEFAULT,
-			self::ATTR_FORMAT_CLASS_COMMAND	=> '%sCommand',
-			self::ATTR_CHARSET_HTML			=> 'utf-8',
-			self::ATTR_CHARSET_DB_DEV		=> 'utf8',
-			self::ATTR_CHARSET_DB_TEST		=> 'utf8',
-			self::ATTR_CHARSET_DB_PROD		=> 'utf8',
-			self::ATTR_COLLATE_DB_DEV		=> 'utf8_general_ci',
-			self::ATTR_COLLATE_DB_TEST		=> 'utf8_general_ci',
-			self::ATTR_COLLATE_DB_PROD		=> 'utf8_general_ci',
-			self::ATTR_ORM					=> 'none',
-			self::ATTR_HOST_DB_DEV			=> 'localhost',
-			self::ATTR_HOST_DB_TEST			=> 'localhost',
-			self::ATTR_HOST_DB_PROD			=> 'localhost',
-			self::ATTR_USER_DB_DEV			=> 'root',
-			self::ATTR_USER_DB_TEST			=> 'test',
-			self::ATTR_USER_DB_PROD			=> 'user',
-			self::ATTR_PASS_DB_DEV			=> '13579',
-			self::ATTR_PASS_DB_TEST			=> '11235',
-			self::ATTR_PASS_DB_PROD			=> '123456',
-			self::ATTR_ADAPTER_DEV			=> 'mysql',
-			self::ATTR_ADAPTER_TEST			=> 'mysql',
-			self::ATTR_ADAPTER_PROD			=> 'mysql',
-			self::ATTR_ADAPTER_ENGINE_DEV	=> 'innodb',
-			self::ATTR_ADAPTER_ENGINE_TEST	=> 'innodb',
-			self::ATTR_ADAPTER_ENGINE_PROD	=> 'innodb',
-			self::ATTR_DATABASE_DEV			=> 'orion_dev',
-			self::ATTR_DATABASE_TEST		=> 'orion_test',
-			self::ATTR_DATABASE_PROD		=> 'orion_prod'
-		);
-		
-		/**
-		 * FIXME : Quando tiver uma classe decente para ler arquivo YAML,
-		 * fazer ler as configurações padrões de um yml ^ ^
-		 * UPDATE: 10/09/2009 - Usando a classe Spyc temos um delay de 0.003479 seconds
-		 * Enquanto ajustando com o array nativo um delay de 0,000071 seconds.
-		 */
-				
-		self::$_kern	= OrionKernel::getInstance();
-		self::$_kern->getStaticInstances();
-						
+		$this->getInstanceKernel();
+		$df = OrionCommand_Settings::getDfConfiguration();
+		foreach($df as $config => $value)
+			$this->setAttribute($config, $value);
+
 		return $this;
+	}
+	
+	protected function getInstanceKernel()
+	{
+		if(!isset(self::$_kern))
+		{
+			self::$_kern	= OrionKernel::getInstance();
+			self::$_kern->getConfiguration();
+		}
+		
+		return self::$_kern;
 	}
 	 
 	/**
@@ -428,8 +429,7 @@ final class Orion
 			/**
 			 * Ainda não temos o autoload na spl para uma Exception aqui :(
 			 */
-			print "Erro ao tentar configurar outras bibliotecas com o Orion";
-			exit(-1);
+			throw new OrionException("Erro ao tentar configurar outra biblioteca com o Orion");
 		}
 		return $this;
 	 }
@@ -451,9 +451,14 @@ final class Orion
 		 * porta para os outros ambientes.
 		 */
 		$path = str_replace('/',DIRECTORY_SEPARATOR,$path);
-				
-		require_once($path);	
-		spl_autoload_register(array($classname, $method));		
+		
+		if(is_file($path))
+			require_once($path);
+		else
+			throw new OrionException("Arquivo não encontrado: ".$path);
+		
+		if(!spl_autoload_register(array($classname, $method)))
+			throw new OrionException(sprintf("Houve um problema ao registrar a biblioteca na SPL.", $path));
 		
 		return $this;	 
 	 }
@@ -488,7 +493,7 @@ final class Orion
 	 */
 	public static function setAttribute($attr, $value)
 	{
-		OrionKernel::$_env->setAttribute($attr, $value);
+		self::$_kern->setAttribute($attr, $value);
 		return true;
 	}
 	
@@ -506,7 +511,7 @@ final class Orion
 				throw new OrionException('A classe não foi encontrada',2);
 		} catch(OrionException $e) 
 		{ 
-			print $e->getMessage(); 
+			print $e->getMessage();
 		}
 		
 		OrionKernel::$_env->setAttributesByConfClass( $class );
@@ -592,6 +597,7 @@ final class Orion
 	 * @scope	public
 	 * @name	getPathApps
 	 * @param	void
+	 * @deprecated
 	 * @return	string
 	 */
 	public static function getPathApps()
@@ -601,25 +607,50 @@ final class Orion
 		return $path;
 	}
 	
-	public static function getPathProject()
-	{
-		return 	self::getPathApps() . DIRECTORY_SEPARATOR . 
-				OrionKernel::$_env->_attributes[self::ATTR_PROJECT] . DIRECTORY_SEPARATOR;
-	}
-	
+	/**
+	 * @class	Orion
+	 * @scope	public
+	 * @name	getPathVendor
+	 * @param	void
+	 * @return	OBJECT
+	 */	
 	public static function getPathVendor()
 	{
 		return self::getPath() . DIRECTORY_SEPARATOR . 'Vendor';
 	}
 	
-	public static function getProjectURL()
+	/**
+	 * @class	Orion
+	 * @scope	public
+	 * @name	getDfPathProjects
+	 * @param	void
+	 * @return	string
+	 */
+	public static function getDfPathProjects()
 	{
-		return 	OrionKernel::$_env->_attributes[self::ATTR_HOST] . 
-				( ! preg_match('/\/$/', OrionKernel::$_env->_attributes[self::ATTR_HOST]) ? '/' : ''). 
-				OrionKernel::$_env->_attributes[self::ATTR_DIR_APPS] . '/' . 
-				OrionKernel::$_env->_attributes[self::ATTR_PROJECT] . '/';
+		return dirname($_SERVER['DOCUMENT_ROOT']);
 	}
 	
+	/**
+	 * @class	Orion
+	 * @scope	public
+	 * @name	getProjectURL
+	 * @param	void
+	 * @return	string
+	 */
+	public static function getProjectURL()
+	{
+		return	OrionKernel::$organizer->getURLHost();
+	}
+	
+	/**
+	 * @class	Orion
+	 * @scope	public
+	 * @name	getURLforView
+	 * @param	void
+	 * @deprecated
+	 * @return	string
+	 */
 	public static function getURLforView()
 	{
 		return self::getProjectURL() . OrionKernel::$_env->_attributes[self::ATTR_DIR_VIEW];
@@ -634,11 +665,9 @@ final class Orion
 	 */
 	public static function getDomain()
 	{
-		return OrionKernel::$_env->_attributes[self::ATTR_HOST] . 
-			( 
-				!preg_match('/\/$/',OrionKernel::$_env->_attributes[self::ATTR_HOST]) ? '/' : '' 
-			);
+		return OrionKernel::$organizer->findURLHost();
 	}
+	
 	/**
 	 * @class	Orion
 	 * @scope	public
@@ -651,6 +680,22 @@ final class Orion
 		$format = OrionKernel::$_env->_attributes[self::ATTR_FORMAT_CLASS_COMMAND];
 		return sprintf($format, $action);
 	 }
+	 
+	/**
+	 * @class	Orion
+	 * @scope	public
+	 * @name	getFileCommand
+	 * @param	string	Module
+	 * @param 	string	Action
+	 * @return	OBJECT
+	 */
+	public static function getFileCommand( $module, $action )
+	{
+		$command = 	OrionKernel::$organizer->paths['commands'] . DIRECTORY_SEPARATOR .
+					$module . DIRECTORY_SEPARATOR .
+					$action . '.php';
+		return $command;
+	}   
 	 
 	/**
 	 * @class	Orion
@@ -689,6 +734,7 @@ final class Orion
 		require_once(Orion::getPath() . DIRECTORY_SEPARATOR . 'Vendor/Spyc/spyc.php');
 		
 		$_config = Spyc::YAMLLoad($file);
+		
 		//OrionTools_Debug::debugArray($_config);
 		/** project */
 		if(!empty($_config['project']['name']))
@@ -697,6 +743,17 @@ final class Orion
 			$this->setAttribute( Orion::ATTR_HOST, $_config['project']['host'] );
 		if(!empty($_config['project']['environment']) || !empty($_config['project']['env']))
 			$this->setAttribute( Orion::ATTR_ENV, $_config['project']['environment'] );
+		if(!empty($_config['project']['url-mode']))
+			if(	$_config['project']['url-mode'] == 'rewrite' || 
+				$_config['project']['url-mode'] == 'friendly' ||
+				$_config['project']['url-mode'] == 'amigavel'
+			)
+			$this->setAttribute( Orion::ATTR_URL_MODE, Orion::ATTR_URL_MODE_REWRITE );
+		else
+			$this->setAttribute( Orion::ATTR_URL_MODE, Orion::ATTR_URL_MODE_DEFAULT );
+		
+		if(!empty($_config['project']['lang']))
+			$this->setAttribute( Orion::ATTR_LANG, $_config['project']['lang'] );
 		
 		/** directories */
 		if(!empty($_config['directory']['commands']))
@@ -711,10 +768,10 @@ final class Orion
 			$this->setAttribute( Orion::ATTR_DIR_VIEW, $_config['directory']['view'] );
 		if(!empty($_config['directory']['logs']))
 			$this->setAttribute( Orion::ATTR_DIR_LOGS, $_config['directory']['logs'] );
-		
-		/** system_url */
-		if(!empty($_config['system_url']['factory_url']))
-			$this->setAttribute( Orion::ATTR_FACTORY_URL, $_config['system_url']['factory_url'] );
+		if(!empty($_config['directory']['cache']))
+			$this->setAttribute( Orion::ATTR_DIR_CACHE, $_config['directory']['cache'] );
+		if(!empty($_config['directory']['cache-html']))
+			$this->setAttribute( Orion::ATTR_DIR_CACHE_HTML, $_config['directory']['cache-html'] );
 		
 		/** database */
 		if(!empty($_config['database']['development']))
@@ -765,10 +822,19 @@ final class Orion
 		if(!empty($_config['view']['template_system']['lib']))
 			$this->setAttribute( Orion::ATTR_VIEW_TEMPLATE_LIB, $_config['view']['template_system']['lib'] );
 		if(!empty($_config['view']['template_system']['class']))
-			$this->setAttribute( Orion::ATTR_VIEW_TEPLATE_CLASS, $_config['view']['template_system']['class'] );
+			$this->setAttribute( Orion::ATTR_VIEW_TEMPLATE_CLASS, $_config['view']['template_system']['class'] );
 		if(!empty($_config['view']['template_system']['autoload']))
-			$this->setAttribute( Orion::ATTR_VIEW_TEPLATE_AUTOLOAD, $_config['view']['template_system']['autoload'] );
+			$this->setAttribute( Orion::ATTR_VIEW_TEMPLATE_AUTOLOAD, $_config['view']['template_system']['autoload'] );
 		
+		if(!empty($_config['library']))
+			foreach($_config['library'] as $libs)
+				if(!empty($libs['lib']) && !empty($libs['class']) && !empty($libs['autoload']))
+				{
+					if(!preg_match('@^\/@', $libs['lib']))
+						$libs['lib'] =	Orion::getAttribute(Orion::ATTR_DIR_PROJECT). DIRECTORY_SEPARATOR. $libs['lib'];
+					
+					$this->_setLibrary($libs['lib'], $libs['class'],$libs['autoload']);
+				}
 	}
 	
 	/**
@@ -795,12 +861,27 @@ final class Orion
 			$at = preg_replace('/^set/', '', $method);
 			self::setAttribute(strtolower($at), $args[0]);
 			return $this;
-		} 
+		} elseif( preg_match('/^getPath/', $method) )
+		{
+			return OrionKernel::$organizer->$method();
+		}
+	}
+	
+	public static function __callStatic($method, $args)
+	{
+		if(preg_match('/^getPath/', $method))
+			return OrionKernel::$organizer->$method();
+		elseif(preg_match('/^getURL/', $method))
+			return OrionKernel::$organizer->$method();
 	}
 	
 	public function __toString()
 	{
 		return self::$_kern->getAttributesAsString();
+		/*/return 	OrionToString::getInstance()
+				->info("Classe Orion")
+				->export(OrionKernel::$_env)
+				->get();*/
 	}
 	
 	public function __isset($property)
