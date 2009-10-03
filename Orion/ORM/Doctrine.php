@@ -1,13 +1,33 @@
 <?php
+/*
+    This library is free software; you can redistribute it and/or
+    modify it under the terms of the GNU Library General Public
+    License version 2 as published by the Free Software Foundation.
+
+    This library is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+    Library General Public License for more details.
+
+    You should have received a copy of the GNU Library General Public License
+    along with this library; see the file COPYING.LIB.  If not, write to
+    the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+    Boston, MA 02110-1301, USA.
+
+    ---
+    Copyright (C) 2009, Tiago Natel de Moura tiago_moura@live.com
+*/
 
 /**
- * @author Tiago Natel de Moura
- * 
- * 
- */
-
-/**
- * Classe de configuração do DOCTRINE
+ * Orion 
+ * OrionORM_Doctrine  - Classe de configuração do ORM Doctrine
+ *
+ * @package     Orion
+ * @author      Tiago Moura <tiago_moura@live.com>
+ * @license     http://www.opensource.org/licenses/lgpl-license.php LGPL
+ * @link        www.orion-framework.org
+ * @since       1.0
+ * @version     $Revision: 1 $
  */
 class OrionORM_Doctrine {
 	/**
@@ -41,7 +61,9 @@ class OrionORM_Doctrine {
 		 * dos models, com o uso de _set(), por exemplo.
 		 */
 		$this->manager->setAttribute(Doctrine::ATTR_AUTO_ACCESSOR_OVERRIDE, true);
-		$this->manager->setAttribute(Doctrine::ATTR_MODEL_LOADING, Doctrine::MODEL_LOADING_CONSERVATIVE);
+		$this->manager->setAttribute(	Doctrine::ATTR_MODEL_LOADING,
+										Doctrine::MODEL_LOADING_CONSERVATIVE
+									);
 		
 		/**
 		 * ATTR_AUTOLOAD_TABLE_CLASSES == true para carregar métodos de usuário da
@@ -60,7 +82,7 @@ class OrionORM_Doctrine {
 	 * @param null
 	 */
 	protected function connectByDoctrine( $opt = true ) {
-		/** ex.: $dsn = mysql://root:123456@www.google.com/mainDB */
+		/** ex.: $dsn = mysql://root:123456@mysql.google.com/mainDB */
 		$env = Orion::getAttribute(Orion::ATTR_ENV);
 		
 		if( $env == Orion::ATTR_ENV_DEV )
@@ -112,10 +134,7 @@ class OrionORM_Doctrine {
 		}
 		
 		if( $opt == true ) {
-			Doctrine::loadModels( 	Orion::getAttribute(Orion::ATTR_DIR_APPS) . DIRECTORY_SEPARATOR .
-									Orion::getAttribute(Orion::ATTR_PROJECT) . DIRECTORY_SEPARATOR . 
-									Orion::getAttribute(Orion::ATTR_DIR_DATABASE) . DIRECTORY_SEPARATOR .
-									'models', Doctrine::MODEL_LOADING_CONSERVATIVE);
+			Doctrine::loadModels( 	OrionKernel::$organizer->getPathModels(), Doctrine::MODEL_LOADING_CONSERVATIVE);
 		}
 	}
 	

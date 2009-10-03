@@ -40,25 +40,23 @@
 		 */
      	$module = ($info->getModule() != NULL) ? $info->getModule() : 'index';
      	$action = ($info->getAction() != NULL) ? $info->getAction() : 'index';
-     	$data = $info->getArray();
+     	$data = array_map('strtolower', $info->getArray());
 
      	/**
 		 * Passa a primeira letra para maíusculo
 		 */
      	$module = htmlspecialchars(ucfirst(strtolower($module)));
      	$action = htmlspecialchars(ucfirst(strtolower($action)));
-
+		
      	/**
 		 * Cria o nome do arquivo que contém o command correspondente
 		 */
-     	$filename = 	Orion::getPathApps() . DIRECTORY_SEPARATOR . 
-						Orion::getAttribute(Orion::ATTR_PROJECT) . DIRECTORY_SEPARATOR . 
-						Orion::getAttribute(Orion::ATTR_DIR_COMMANDS) . DIRECTORY_SEPARATOR . 
-						$module . DIRECTORY_SEPARATOR . $action . '.php';
+     	$filename = Orion::getFileCommand( $module, $action );
 		
      	if( !file_exists($filename) ) 
 		{
-     		throw new OrionException_PageNotFound(sprintf('Página não encontrada. %s', (Orion::$debugging == true ? 'File: ' . $filename .' - Modulo: '.$module.' - Action: '.$action : '')));
+			if(Orion::getAttribute(Orion::ATTR_ENV) == Orion::ATTR_ENV_DEV)
+				throw new OrionException_PageNotFound(sprintf('Página não encontrada.'), $module, $action);
      	}
 
      	/**
@@ -74,7 +72,7 @@
 
      	if(!class_exists($classname,false))
      	{
-     		throw new Exception_PageNotFound('Classe Command não encontrada: '.$classname);
+     		throw new OrionException_PageNotFound('Classe Command não encontrada: '.$classname);
      	}
 
      	// Carrega e retorna a classe

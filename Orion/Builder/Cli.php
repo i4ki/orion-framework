@@ -20,7 +20,7 @@
 
 /**
  * Orion
- * {info}
+ * OrionBuilder_Cli
  *
  * @package     Orion
  * @author      Tiago Moura <tiago_moura@live.com>
@@ -52,22 +52,25 @@
 	
 	public function getOption()
 	{
-		if( ($this->_argv[1] == 'apps') || ($this->_argv[1] == '-a') )
-			$this->generateApps();
-		elseif( $this->_argv[1] == 'command' || $this->_argv[1] == '-c')
-			$this->generateCommand( $this->_argv[2] );
-		elseif( $this->_argv[1] == 'library' || $this->_argv[1] == '-l' )
-			$this->generateLibrary( $this->argv[2] );
-		elseif( $this->_argv[1] == 'models' || $this->_argv[1] == '-m' )
-			$this->generateModels( $this->_argv[2] );
-		elseif( $this->_argv[1] == 'fixtures' || $this->_argv[1] == '-f' )
-			$this->fixtures();
-		elseif( $this->_argv[1] == '--version' || $this->_argv[1] == '-v' )
-			$this->showVersion();
-		elseif( $this->_argv[1] == '--interactive' || $this->_argv[1] == '-i' )
-			$this->interactiveCli();
-		elseif( $this->_argv[1] == '--help' || $this->_argv[1] == '-h')
-			$this->help();
+		if(isset($this->_argv[1]))
+			if( ($this->_argv[1] == 'apps') || ($this->_argv[1] == '-a') )
+				$this->generateApps();
+			elseif( $this->_argv[1] == 'command' || $this->_argv[1] == '-c')
+				$this->generateCommand( $this->_argv[2] );
+			elseif( $this->_argv[1] == 'library' || $this->_argv[1] == '-l' )
+				$this->generateLibrary( $this->argv[2] );
+			elseif( $this->_argv[1] == 'models' || $this->_argv[1] == '-m' )
+				$this->generateModels( $this->_argv[2] );
+			elseif( $this->_argv[1] == 'fixtures' || $this->_argv[1] == '-f' )
+				$this->fixtures();
+			elseif( $this->_argv[1] == '--version' || $this->_argv[1] == '-v' )
+				$this->showVersion();
+			elseif( $this->_argv[1] == '--interactive' || $this->_argv[1] == '-i' )
+				$this->interactiveCli();
+			elseif( $this->_argv[1] == '--help' || $this->_argv[1] == '-h')
+				$this->help();
+			else
+				$this->help();
 		else
 			$this->help();
 	}
@@ -76,9 +79,9 @@
 	{
 		$this->greetings();
 		
-		if( $this->_argv[1] == 'help' && $this->_argc > 2 )
+		if( isset($this->_argv[1]) && $this->_argv[1] == 'help' && $this->_argc > 2 )
 		{
-			if ( $this->_argv[2] == 'apps' || $this->_argv[2] == '-a' )
+			if ( isset($this->_argv[2]) && $this->_argv[2] == 'apps' || $this->_argv[2] == '-a' )
 			{
 				printf("\n");
 				print "\033[31;33;40m@see help apps:\033[0m\n";
@@ -93,6 +96,14 @@
 				printf("Também será automaticamente gerado os esqueletos dos Commands, models, tests, configurações, etc.\n");
 			}
 		} else {
+			if(is_writable(getcwd()))
+				copy(	Orion::getPathOrion() . DIRECTORY_SEPARATOR .
+						'scripts' . DIRECTORY_SEPARATOR .
+						'creator', 
+						getcwd() . DIRECTORY_SEPARATOR . 'creator'
+				);
+			chmod(getcwd().DIRECTORY_SEPARATOR.'creator', 0777);
+			
 			printf("\n");
 			print "\033[31;33;40mInformações:\033[0m\n";
 			printf(" -v, --version\t\tExibir a versão do Orion\n");

@@ -40,6 +40,8 @@ class OrionKernel
 	 */
 	public static $_env;
 	
+	public static $organizer;
+	
 	/**
 	 * @scope	protected
 	 * @var 	OBJECT	$_config
@@ -66,6 +68,13 @@ class OrionKernel
 		 * What do you find ??
 		 */
 	}
+	
+	public function setAttribute($attr, $value)
+	{
+		if(!is_object(self::$_env))
+			$this->getConfiguration();
+		self::$_env->setAttribute($attr, $value);
+	}
 
 	public static function getInstance()
 	{
@@ -76,9 +85,11 @@ class OrionKernel
 		return $_instance;
 	}
 	
-	public function getStaticInstances()
+	public function getConfiguration()
 	{
 		self::$_env = OrionCommand_Settings_Environment::getInstance();
+		self::$organizer = OrionOrganizer::getInstance();
+		return $this;
 	}
 
 	/**
@@ -109,6 +120,7 @@ class OrionKernel
 	 */
 	private function _init()
 	{
+		self::$organizer->organizing();
 		self::checkPermissions();
 		return $this;
 	}
@@ -123,9 +135,9 @@ class OrionKernel
 	public static function checkPermissions()
 	{
 		$dirs = array(
-			Orion::getAttribute(Orion::ATTR_DIR_LOGS),
-			Orion::getAttribute(Orion::ATTR_DIR_CACHE),
-			Orion::getAttribute(Orion::ATTR_DIR_TEMP)
+			OrionKernel::$organizer->paths['logs'],
+			OrionKernel::$organizer->paths['cache'],
+			OrionKernel::$organizer->paths['cache-html']
 		);
 		
 		foreach( $dirs as $dir )
@@ -133,7 +145,7 @@ class OrionKernel
 			if(!preg_match('/^\//', $dir))
 				$dir = Orion::getPathOrion() . DIRECTORY_SEPARATOR . $dir;
 			if(!is_writable($dir))
-				throw new OrionException(sprintf("O arquivo %s deve ter permissão de escrita.", $dir));
+				throw new OrionException(sprintf("O arquivo %s deve ter permissão de escrita.", $dir), OrionError::FILE_NOT_WRITABLE);
 		}
 		return true;	
 	}
@@ -147,9 +159,9 @@ class OrionKernel
 	 */
 	protected function configCommand()
 	{
-		if (self::$_env->_attributes[Orion::ATTR_FACTORY_URL] == Orion::ATTR_FACTORY_URL_FRIENDLY)
+		if (self::$_env->_attributes[Orion::ATTR_URL_MODE] == Orion::ATTR_URL_MODE_REWRITE)
 			$this->commandInfo = new OrionCommand_Info_Rewrite();
-		elseif (self::$_env->_attributes[Orion::ATTR_FACTORY_URL] == Orion::ATTR_FACTORY_URL_DEFAULT)
+		elseif (self::$_env->_attributes[Orion::ATTR_URL_MODE] == Orion::ATTR_URL_MODE_DEFAULT)
 			$this->commandInfo = new OrionCommand_Info_Default();
 		else 
 			throw new OrionException("Ajuste corretamente o sistema de URL'");

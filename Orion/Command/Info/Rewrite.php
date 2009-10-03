@@ -34,33 +34,12 @@
 class OrionCommand_Info_Rewrite implements OrionCommand_Info {
 
     private $gets;
-
+	
     public function __construct() {
-        
-		$doc_root 	= explode(DIRECTORY_SEPARATOR, $_SERVER['DOCUMENT_ROOT']);
-		$file		= explode(DIRECTORY_SEPARATOR, $_SERVER['SCRIPT_FILENAME']);
-		array_shift($doc_root);
-		array_shift($file);
-		for($i=0;$i<count($doc_root);$i++)
-			array_shift($file);
-		unset($doc_root);
-		$diretorio 	= dirname(implode(DIRECTORY_SEPARATOR, $file));
+					
+		$this->gets = OrionKernel::$organizer->getModuleAction();
 		
-		unset($file);
-		        
-		/**$diretorio = substr($_SERVER['SCRIPT_FILENAME'],strlen($_SERVER['DOCUMENT_ROOT']),-10);*/
-		
-        // Recupera a URI
-        $uri = $_SERVER["REQUEST_URI"];
-        
-        $gets = explode("/",str_replace(strrchr($uri, "?"), "", $uri));
-		
-        // Primeiro elemento sempre será em branco, então faz um array_shift para remove-lo
-        array_shift($gets);
-        
-		// Caso o sistema esteja em um diretório, é necessário remover o caminho de pastas do mesmo
-        $this->gets = array_slice($gets,sizeof(explode(DIRECTORY_SEPARATOR,$diretorio)));
-        
+        //OrionTools_Debug::debugArray($this->gets, true, true, true, true);
         /**
          * Retira a sintax maliciosa
          */
@@ -75,7 +54,7 @@ class OrionCommand_Info_Rewrite implements OrionCommand_Info {
 	 * @return String - Retorna o module usado
 	 */
     public function getModule() {
-        return $this->gets[0];
+        return !empty($this->gets[0]) ? $this->gets[0] : false;
     }
     /**
      * Retorna a segunda parte da URL
