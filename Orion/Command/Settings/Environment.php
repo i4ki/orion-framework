@@ -60,12 +60,12 @@ class OrionCommand_Settings_Environment
 	{
 		if(is_string($attr))
 		{
-			foreach(Orion::$_const_string as $key => $val)
+			foreach(Orion::$POLICY_STR as $key => $val)
 			{
 				if($attr == $key)
 					if(!is_array($val))
 					{
-						foreach( Orion::$_const_string as $key => $val )
+						foreach( Orion::$POLICY_STR_VAL as $key => $val )
 							if ( $key == $value )
 								$value = constant('Orion::'.$val);
 						$this->setAttribute(constant('Orion::'.$val), $value);
@@ -81,11 +81,16 @@ class OrionCommand_Settings_Environment
 						}
 					}
 			}
-		} elseif(is_integer(( int ) $attr))
+		} elseif(is_integer($attr))
 		{
-			foreach(Orion::$_const_string as $key => $val)
+			foreach(Orion::$POLICY_STR_VAL as $key => $val)
 				if( $value == $key )
-					$value = constant('Orion::'.$val);
+				{
+					if(!defined('Orion::'.$val))
+						throw new OrionException("Orion::".$val." não existe.");
+					else
+						$value = constant('Orion::'.$val);
+				}
 				$this->_attributes[$attr] = $value;
 		}	
 			return;
@@ -96,6 +101,7 @@ class OrionCommand_Settings_Environment
 	 * @scope	public
 	 * @name	setAttributesByConfClass
 	 * @param	string	$classname
+	 * @deprecated
 	 * @return	OBJECT
 	 */
 	public function setAttributesByConfClass( $classname )
@@ -104,9 +110,6 @@ class OrionCommand_Settings_Environment
 		 * FIXME : TORNAR ISSO ESCALÁVEL
 		 */
 		$p = array(
-			Orion::ATTR_FACTORY_URL => 	defined($classname.'::URL_TYPE') 	? 
-										constant($classname.'::URL_TYPE')	:
-										constant('Orion::ATTR_FACTORY_URL_DEFAULT'),
 			Orion::ATTR_CRUD_C		=> 	defined($classname.'::ATTR_CRUD_C')	?
 										constant($classname.'::ATTR_CRUD_C')	:
 										constant('Orion::ATTR_CRUD_C'),
