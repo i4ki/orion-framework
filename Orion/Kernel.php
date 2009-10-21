@@ -43,12 +43,6 @@ class OrionKernel
 	public static $organizer;
 	
 	/**
-	 * @scope	protected
-	 * @var 	OBJECT	$_config
-	 */
-	protected $_config 		= 0;
-	
-	/**
 	 * @scope protected
 	 * @var 	OBJECT	$commandInfo
 	 */
@@ -73,7 +67,7 @@ class OrionKernel
 	{
 		if(!is_object(self::$_env))
 			$this->getConfiguration();
-		self::$_env->setAttribute($attr, $value);
+		return self::$_env->setAttribute($attr, $value);
 	}
 
 	public static function getInstance()
@@ -89,6 +83,14 @@ class OrionKernel
 	{
 		self::$_env = OrionCommand_Settings_Environment::getInstance();
 		self::$organizer = OrionOrganizer::getInstance();
+		
+		return $this;
+	}
+	
+	public function prepare()
+	{
+		self::$organizer->organizing();
+		self::checkPermissions();
 		return $this;
 	}
 
@@ -101,27 +103,12 @@ class OrionKernel
 	 */
 	public function init()
 	{
-		$this->_init();
 		/**
 		 * TODO : Inclui o arquivo do Command e instancia a classe correspondente
 		 */
-		$_factory = new OrionCommand_Factory();
-		$_factory	->createCommand($this->configCommand())
+		$this->_factory = new OrionCommand_Factory();
+		$this->_factory	->createCommand($this->configCommand())
 					->execute();
-		return $this;
-	}
-	
-	/**
-	 * @class	Orion
-	 * @scope	public
-	 * @name	_init
-	 * @param	void
-	 * @return	OBJECT
-	 */
-	private function _init()
-	{
-		self::$organizer->organizing();
-		self::checkPermissions();
 		return $this;
 	}
 	
@@ -163,7 +150,11 @@ class OrionKernel
 			$this->commandInfo = new OrionCommand_Info_Rewrite();
 		elseif (self::$_env->_attributes[Orion::ATTR_URL_MODE] == Orion::ATTR_URL_MODE_DEFAULT)
 			$this->commandInfo = new OrionCommand_Info_Default();
-		else 
+		elseif (!empty(self::$_env->_attributes[Orion::ATTR_URL_MODE]))
+		{
+			$info = self::$_env->_attributes[Orion::ATTR_URL_MODE];
+			$this->commandInfo = new $info();
+		} else
 			throw new OrionException("Ajuste corretamente o sistema de URL'");
 
 		return $this->commandInfo;
