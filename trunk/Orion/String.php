@@ -57,7 +57,7 @@ class OrionString
 		elseif(is_object($str) && get_class($str) == __CLASS__)
 			$this->value = $str->value;
 		else
-			throw new OrionException(sprintf("%s passado para o construtor de %s, deveria ser uma string.", ucfirst(strtolower(gettype($str))), __CLASS__), OrionError::TYPE_STRING);
+			$this->throwExceptionInvalidType($str, 'String');
 		
 		$this->length = strlen($this->value);
 		$this->len = &$this->length;
@@ -87,7 +87,7 @@ class OrionString
 			$this->value .= $str->value;
 			$this->length += strlen($str->value);
 		} else
-			throw new OrionException(sprintf("%s passado para o método %s::append, deveria ser string ou instancia da classe %s", ucfirst(strtolower(gettype($str))), __CLASS__, __CLASS__), OrionError::TYPE_STRING);
+			$this->throwExceptionInvalidType($str, 'String');
 		
 		return $this;
 	}
@@ -151,7 +151,7 @@ class OrionString
 	public function charAt($idx)
 	{
 		if(!is_integer($idx))
-			throw new OrionException(sprintf("%s passado ao método %s::charAt, deveria ser um inteiro.", ucfirst(strtolower(gettype($idx))), __CLASS__), OrionError::TYPE_STRING);
+			$this->throwExceptionInvalidType($idx, 'String');
 
 		return !empty($this->value[$idx]) ? $this->value[$idx] : false;
 	}
@@ -159,7 +159,7 @@ class OrionString
 	public function charCodeAt($idx)
 	{
 		if(!is_integer($idx))
-			throw new OrionException(sprintf("%s passado ao método %s::charAt, deveria ser um inteiro.", ucfirst(strtolower(gettype($idx))), __CLASS__), OrionError::TYPE_STRING);
+			$this->throwExceptionInvalidType($idx, 'String');
 		
 		return !empty($this->value[$idx]) ? dechex(ord($this->value[$idx])) : false;
 	}
@@ -201,7 +201,7 @@ class OrionString
 	public function equals($str)
 	{
 		if(!is_string($str) && !(is_object($str) && get_class($str) == __CLASS__))
-			throw new OrionException(sprintf("%s passado ao método %s::equals, deveria ser uma string ou instancia de OrionString.", ucfirst(strtolower(gettype($str))), __CLASS__), OrionError::TYPE_STRING);
+			$this->throwExceptionInvalidType($str, 'String');
 		
 		return strcmp($this->value, is_object($str) ? $str->value : $str) == 0 ? TRUE : false;
 	}
@@ -264,5 +264,13 @@ class OrionString
 		$bin = implode("",$bin);
 		
 		return $bin;
+	}
+	
+	private function throwExceptionInvalidType($nr, $type = 'String')
+	{
+		if(class_exists('OrionException'))
+			throw new OrionException(sprintf("%s passado para o construtor de %s, deveria ser %s.", ucfirst(strtolower(gettype($nr))), __CLASS__, $type), OrionError::TYPE_STRING);
+		else
+			throw new Exception(sprintf("%s passado para o construtor de %s, deveria ser %s.", ucfirst(strtolower(gettype($nr))), __CLASS__, $type));
 	}
 }
