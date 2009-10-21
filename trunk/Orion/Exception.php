@@ -42,8 +42,13 @@ class OrionException extends Exception
 	{
 		$this->message = $message;
 		$this->code = $code;
+<<<<<<< .mine
+		$this->extra = $extra;
+
+=======
 		$this->extra = $extra;
 		
+>>>>>>> .r53
 		parent::__construct($this->message,$this->code);
 		$this->getSolution();
 	}
@@ -73,7 +78,11 @@ class OrionException extends Exception
 		print "<head>\n";
 		print "<title>Error</title>\n";
 		print "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\"/>\n";
+<<<<<<< .mine
+		print "<script type=\"text/javascript\" src=\"".Orion::getAttribute(Orion::ATTR_HOST) . "/dev/view/js/jquery.js\"></script>\n";
+=======
 		print "<script type=\"text/javascript\" src=\"".Orion::getProjectURL() . "/dev/view/js/jquery.js\"></script>\n";
+>>>>>>> .r53
 		print "<script type=\"text/javascript\">\n";
 		print "\$(document).ready(function() {\n";
 		print "\$(\"#trace\").hide();\n";
