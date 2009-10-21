@@ -116,8 +116,7 @@ class OrionORM_Doctrine {
 				$this->conn->setCollate( Orion::getAttribute(Orion::ATTR_COLLATE_DB_PROD) );
 			}
 			elseif( $env == Orion::ATTR_ENV_DEV )
-			{
-				
+			{				
 				$this->conn->setCharset( Orion::getAttribute(Orion::ATTR_CHARSET_DB_DEV) );
 				$this->conn->setCollate( Orion::getAttribute(Orion::ATTR_COLLATE_DB_DEV) );
 			} elseif( $env == Orion::ATTR_ENV_TEST )
@@ -128,9 +127,13 @@ class OrionORM_Doctrine {
 			
 			$this->manager->setAttribute(Doctrine::ATTR_AUTO_ACCESSOR_OVERRIDE, true);
 			
-		} catch (Exception $e) {
+		} catch (Doctrine_Exception $e) {
 			print 'Codigo: ' . $e->getCode() . '<br />';
-			print 'Message: ' . $e->getMessage() . '<br />';
+			print 'Message: ' . $e->getPortableMessage() . '<br />';
+		} catch( Exception $e )
+		{
+			print 'Cod.: ' . $e->getCode()."<br>";
+			print 'Message: '.$e->getMessage()."<br>";
 		}
 		
 		if( $opt == true ) {

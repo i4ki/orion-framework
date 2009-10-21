@@ -124,7 +124,7 @@ class OrionSecurity_Restricted {
  		
  		switch ($this->arrURL[0]) {
  			case 'admin':
- 				print "putzzz";
+ 				
  				$this->loginAdmin();
  				break;
  			case 'usuario':

@@ -74,7 +74,17 @@
 	}
 
 	public static function setHeader($type = null, $charset = null) {
-		header( ($type == null) ? "Content-Type: text/html; charset=".($charset == null ? Orion::getAttribute(Orion::ATTR_CHARSET_HTML) : $charset) : "Content-Type: ".$type."; charset=".($charset == null ? Orion::getAttribute(Orion::ATTR_CHARSET_HTML) : $charset), true);
+		if(!headers_sent())
+			header( 
+				($type == null) ? 
+				"Content-Type: text/html; charset=" . 
+					(
+						$charset == null ? 
+						Orion::getAttribute(Orion::ATTR_CHARSET_HTML) : 
+						$charset
+					) : 
+				"Content-Type: ".$type."; charset=".($charset == null ? Orion::getAttribute(Orion::ATTR_CHARSET_HTML) : $charset), true
+			);
 	}
 
   }
