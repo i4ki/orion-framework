@@ -1,0 +1,229 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>Modelo UML</title><link rel="stylesheet" href="xmi.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.67.2"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="article" lang="en"><div class="titlepage"><div><div><h2 class="title"><a name="id2716981"></a>Modelo UML</h2></div><div><h2 class="title"><a name="id2716981"></a>Modelo UML</h2></div><div><h2 class="title"><a name="id2716981"></a>Modelo UML</h2></div><div><h2 class="title"><a name="id2716981"></a>Modelo UML</h2></div><div><h2 class="title"><a name="id2716981"></a>Modelo UML</h2></div><div><h2 class="title"><a name="id2716981"></a>Modelo UML</h2></div></div><hr></div><div class="toc"><p><b>Table of Contents</b></p><dl><dt><span class="section"><a href="#actors">Actors</a></span></dt><dt><span class="section"><a href="#usecases">Use Cases</a></span></dt><dt><span class="section"><a href="#interfaces">Interfaces</a></span></dt><dd><dl><dt><span class="section"><a href="#id2756188">OrionCommand_Info</a></span></dt></dl></dd><dt><span class="section"><a href="#classes">Classes</a></span></dt><dd><dl><dt><span class="section"><a href="#id2756438">Orion</a></span></dt><dt><span class="section"><a href="#id2765412">array</a></span></dt><dt><span class="section"><a href="#id2765506">mixed</a></span></dt><dt><span class="section"><a href="#id2765600">OrionCommand_Settings</a></span></dt><dt><span class="section"><a href="#id2766114">OrionKernel</a></span></dt><dt><span class="section"><a href="#id2766984">OrionOrganizer</a></span></dt><dt><span class="section"><a href="#id2767754">OrionCommand_Info_Rewrite</a></span></dt><dt><span class="section"><a href="#id2768335">OrionCommand_Info_Default</a></span></dt><dt><span class="section"><a href="#id2768709">OrionCommand_Settings_Environment</a></span></dt><dt><span class="section"><a href="#id2769206">OrionCommand_Factory</a></span></dt></dl></dd><dt><span class="section"><a href="#diagrams">Diagrams</a></span></dt><dd><dl><dt><span class="section"><a href="#id2769413">diagrama de classe</a></span></dt><dt><span class="section"><a href="#id2769439">Classes:</a></span></dt></dl></dd></dl></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="actors"></a>Actors</h2></div></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="usecases"></a>Use Cases</h2></div></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="interfaces"></a>Interfaces</h2></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="id2756188"></a>OrionCommand_Info</h3></div></div></div><div class="table"><a name="id2756195"></a><p class="title"><b>Table 1. </b></p><table summary="" border="1"><colgroup><col align="left"><col align="left"><col align="left"></colgroup><thead><tr><th class="class-title" align="left">Interface</th><th class="class-name" colspan="2" align="left">OrionCommand_Info</th></tr></thead><tbody><tr><td class="info-title" colspan="3" align="left">
+                <p>Operations:</p>
+              </td></tr><tr><td class="feature-heading" align="left">
+                <p>visibility</p>
+              </td><td class="feature-heading" align="left">
+                <p>return</p>
+              </td><td class="feature-heading" align="left">
+                <p>name</p>
+              </td></tr><tr><td class="feature-detail" align="left">public</td><td class="feature-detail" align="left">
+                <p class="datatype">void</p>
+              </td><td class="feature-detail" align="left">getModule</td></tr><tr><td class="comment" align="left"> </td><td class="comment" colspan="2" align="left"> </td></tr><tr><td class="feature-detail" align="left">public</td><td class="feature-detail" align="left">
+                <p class="datatype">void</p>
+              </td><td class="feature-detail" align="left">getAction</td></tr><tr><td class="comment" align="left"> </td><td class="comment" colspan="2" align="left"> </td></tr></tbody></table></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="classes"></a>Classes</h2></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="id2756438"></a>Orion</h3></div></div></div><div class="table"><a name="id2756444"></a><p class="title"><b>Table 2. </b></p><table summary="" border="1"><colgroup><col align="left"><col align="left"><col align="left"></colgroup><thead><tr><th class="class-title" align="left">Class</th><th class="class-name" colspan="2" align="left">Orion</th></tr></thead><tbody><tr><td class="comment" colspan="3" align="left">
+                <p>Classe principal do framework</p>
+              </td></tr><tr><td class="info-title" colspan="3" align="left">Attributes:</td></tr><tr><td class="feature-heading" align="left">visibility</td><td class="feature-heading" align="left">type</td><td class="feature-heading" align="left">name</td></tr><tr><td class="feature-detail" align="left">public</td><td class="feature-detail" align="left"> </td><td class="feature-detail" align="left">$_SERVER</td></tr><tr><td class="comment" align="left"> </td><td class="comment" colspan="2" align="left">Simula a variavel global $_SERVER para o ambiente de testes.</td></tr><tr><td class="feature-detail" align="left">public</td><td class="feature-detail" align="left"> </td><td class="feature-detail" align="left">$_SESSION</td></tr><tr><td class="comment" align="left"> </td><td class="comment" colspan="2" align="left">Simula a variavel global $_SESSION para o ambiente de testes.</td></tr><tr><td class="feature-detail" align="left">public</td><td class="feature-detail" align="left"> </td><td class="feature-detail" align="left">$_COOKIE</td></tr><tr><td class="comment" align="left"> </td><td class="comment" colspan="2" align="left">Simula a variavel global $_COOKIE para o ambiente de testes.</td></tr><tr><td class="feature-detail" align="left">public</td><td class="feature-detail" align="left"> </td><td class="feature-detail" align="left">$_const_string</td></tr><tr><td class="comment" align="left"> </td><td class="comment" colspan="2" align="left"> </td></tr><tr><td class="feature-detail" align="left">public</td><td class="feature-detail" align="left"> </td><td class="feature-detail" align="left">$_defaults</td></tr><tr><td class="comment" align="left"> </td><td class="comment" colspan="2" align="left"> </td></tr><tr><td class="feature-detail" align="left">public</td><td class="feature-detail" align="left"> </td><td class="feature-detail" align="left">$_already_init</td></tr><tr><td class="comment" align="left"> </td><td class="comment" colspan="2" align="left"> </td></tr><tr><td class="feature-detail" align="left">private</td><td class="feature-detail" align="left"> </td><td class="feature-detail" align="left">$_path</td></tr><tr><td class="comment" align="left"> </td><td class="comment" colspan="2" align="left"> </td></tr><tr><td class="feature-detail" align="left">public</td><td class="feature-detail" align="left">OrionKernel</td><td class="feature-detail" align="left">$_kern</td></tr><tr><td class="comment" align="left"> </td><td class="comment" colspan="2" align="left"> </td></tr><tr><td class="feature-detail" align="left">public</td><td class="feature-detail" align="left">OrionOrganizer</td><td class="feature-detail" align="left">$organizer</td></tr><tr><td class="comment" align="left"> </td><td class="comment" colspan="2" align="left"> </td></tr><tr><td class="feature-detail" align="left">public</td><td class="feature-detail" align="left"> </td><td class="feature-detail" align="left">$_performance</td></tr><tr><td class="comment" align="left"> </td><td class="comment" colspan="2" align="left"> </td></tr><tr><td class="info-title" colspan="3" align="left">
+                <p>Operations:</p>
+              </td></tr><tr><td class="feature-heading" align="left">
+                <p>visibility</p>
+              </td><td class="feature-heading" align="left">
+                <p>return</p>
+              </td><td class="feature-heading" align="left">
+                <p>name</p>
+              </td></tr><tr><td class="feature-detail" align="left">private</td><td class="feature-detail" align="left">
+                <p class="datatype">void</p>
+              </td><td class="feature-detail" align="left">__construct</td></tr><tr><td class="comment" align="left"> </td><td class="comment" colspan="2" align="left"> </td></tr><tr><td class="feature-detail" align="left">public</td><td class="feature-detail" align="left">
+                <p class="datatype">void</p>
+              </td><td class="feature-detail" align="left">getInstance</td></tr><tr><td class="comment" align="left"> </td><td class="comment" colspan="2" align="left"> </td></tr><tr><td class="feature-detail" align="left">public</td><td class="feature-detail" align="left">
+                <p class="datatype">void</p>
+              </td><td class="feature-detail" align="left">autoload</td></tr><tr><td class="comment" align="left"> </td><td class="comment" colspan="2" align="left"> </td></tr><tr><td class="feature-detail" align="left">public</td><td class="feature-detail" align="left">
+                <p class="datatype">void</p>
+              </td><td class="feature-detail" align="left">init</td></tr><tr><td class="comment" align="left"> </td><td class="comment" colspan="2" align="left"> </td></tr><tr><td class="feature-detail" align="left">public</td><td class="feature-detail" align="left">
+                <p class="datatype">void</p>
+              </td><td class="feature-detail" align="left">_init</td></tr><tr><td class="comment" align="left"> </td><td class="comment" colspan="2" align="left"> </td></tr><tr><td class="feature-detail" align="left">protected</td><td class="feature-detail" align="left">
+                <p class="datatype">void</p>
+              </td><td class="feature-detail" align="left">getInstanceKernel</td></tr><tr><td class="comment" align="left"> </td><td class="comment" colspan="2" align="left"> </td></tr><tr><td class="feature-detail" align="left">public</td><td class="feature-detail" align="left">
+                <p class="datatype">void</p>
+              </td><td class="feature-detail" align="left">registerOrionAutoload</td></tr><tr><td class="comment" align="left"> </td><td class="comment" colspan="2" align="left"> </td></tr><tr><td class="feature-detail" align="left">public</td><td class="feature-detail" align="left">
+                <p class="datatype">void</p>
+              </td><td class="feature-detail" align="left">setLibraries</td></tr><tr><td class="comment" align="left"> </td><td class="comment" colspan="2" align="left"> </td></tr><tr><td class="feature-detail" align="left">private</td><td class="feature-detail" align="left">
+                <p class="datatype">void</p>
+              </td><td class="feature-detail" align="left">_setLibrary</td></tr><tr><td class="comment" align="left"> </td><td class="comment" colspan="2" align="left"> </td></tr><tr><td class="feature-detail" align="left">protected</td><td class="feature-detail" align="left">
+                <p class="datatype">void</p>
+              </td><td class="feature-detail" align="left">setDefaultAttributes</td></tr><tr><td class="comment" align="left"> </td><td class="comment" colspan="2" align="left"> </td></tr><tr><td class="feature-detail" align="left">public</td><td class="feature-detail" align="left">
+                <p class="datatype">void</p>
+              </td><td class="feature-detail" align="left">setAttribute</td></tr><tr><td class="comment" align="left"> </td><td class="comment" colspan="2" align="left"> </td></tr><tr><td class="feature-detail" align="left">public</td><td class="feature-detail" align="left">
+                <p class="datatype">void</p>
+              </td><td class="feature-detail" align="left">setAttributeByConfClass</td></tr><tr><td class="comment" align="left"> </td><td class="comment" colspan="2" align="left"> </td></tr><tr><td class="feature-detail" align="left">public</td><td class="feature-detail" align="left">
+                <p class="datatype">void</p>
+              </td><td class="feature-detail" align="left">getAttribute</td></tr><tr><td class="comment" align="left"> </td><td class="comment" colspan="2" align="left"> </td></tr><tr><td class="feature-detail" align="left">public</td><td class="feature-detail" align="left">
+                <p class="datatype">void</p>
+              </td><td class="feature-detail" align="left">getAttrEnvironment</td></tr><tr><td class="comment" align="left"> </td><td class="comment" colspan="2" align="left"> </td></tr><tr><td class="feature-detail" align="left">public</td><td class="feature-detail" align="left">
+                <p class="datatype">void</p>
+              </td><td class="feature-detail" align="left">getPath</td></tr><tr><td class="comment" align="left"> </td><td class="comment" colspan="2" align="left"> </td></tr><tr><td class="feature-detail" align="left">public</td><td class="feature-detail" align="left">
+                <p class="datatype">void</p>
+              </td><td class="feature-detail" align="left">getPathOrion</td></tr><tr><td class="comment" align="left"> </td><td class="comment" colspan="2" align="left"> </td></tr><tr><td class="feature-detail" align="left">public</td><td class="feature-detail" align="left">
+                <p class="datatype">void</p>
+              </td><td class="feature-detail" align="left">getPathVendor</td></tr><tr><td class="comment" align="left"> </td><td class="comment" colspan="2" align="left"> </td></tr><tr><td class="feature-detail" align="left">public</td><td class="feature-detail" align="left">
+                <p class="datatype">void</p>
+              </td><td class="feature-detail" align="left">getDfPathProjects</td></tr><tr><td class="comment" align="left"> </td><td class="comment" colspan="2" align="left"> </td></tr><tr><td class="feature-detail" align="left">public</td><td class="feature-detail" align="left">
+                <p class="datatype">void</p>
+              </td><td class="feature-detail" align="left">getProjectURL</td></tr><tr><td class="comment" align="left"> </td><td class="comment" colspan="2" align="left"> </td></tr><tr><td class="feature-detail" align="left">public</td><td class="feature-detail" align="left">
+                <p class="datatype">void</p>
+              </td><td class="feature-detail" align="left">getDomain</td></tr><tr><td class="comment" align="left"> </td><td class="comment" colspan="2" align="left"> </td></tr><tr><td class="feature-detail" align="left">public</td><td class="feature-detail" align="left">
+                <p class="datatype">void</p>
+              </td><td class="feature-detail" align="left">getFormatedClassComands</td></tr><tr><td class="comment" align="left"> </td><td class="comment" colspan="2" align="left"> </td></tr><tr><td class="feature-detail" align="left">public</td><td class="feature-detail" align="left">
+                <p class="datatype">void</p>
+              </td><td class="feature-detail" align="left">getFileCommand</td></tr><tr><td class="comment" align="left"> </td><td class="comment" colspan="2" align="left"> </td></tr><tr><td class="feature-detail" align="left">public</td><td class="feature-detail" align="left">
+                <p class="datatype">void</p>
+              </td><td class="feature-detail" align="left">getAttributeAsArray</td></tr><tr><td class="comment" align="left"> </td><td class="comment" colspan="2" align="left"> </td></tr><tr><td class="feature-detail" align="left">public</td><td class="feature-detail" align="left">
+                <p class="datatype">void</p>
+              </td><td class="feature-detail" align="left">generateProtoCommand</td></tr><tr><td class="comment" align="left"> </td><td class="comment" colspan="2" align="left"> </td></tr><tr><td class="feature-detail" align="left">public</td><td class="feature-detail" align="left">
+                <p class="datatype">void</p>
+              </td><td class="feature-detail" align="left">loadYmlConfig</td></tr><tr><td class="comment" align="left"> </td><td class="comment" colspan="2" align="left"> </td></tr><tr><td class="feature-detail" align="left">public</td><td class="feature-detail" align="left">
+                <p class="datatype">void</p>
+              </td><td class="feature-detail" align="left">__call</td></tr><tr><td class="comment" align="left"> </td><td class="comment" colspan="2" align="left"> </td></tr><tr><td class="feature-detail" align="left">public</td><td class="feature-detail" align="left">
+                <p class="datatype">void</p>
+              </td><td class="feature-detail" align="left">__callStatic</td></tr><tr><td class="comment" align="left"> </td><td class="comment" colspan="2" align="left"> </td></tr><tr><td class="feature-detail" align="left">public</td><td class="feature-detail" align="left">
+                <p class="datatype">void</p>
+              </td><td class="feature-detail" align="left">__toString</td></tr><tr><td class="comment" align="left"> </td><td class="comment" colspan="2" align="left"> </td></tr><tr><td class="feature-detail" align="left">public</td><td class="feature-detail" align="left">
+                <p class="datatype">void</p>
+              </td><td class="feature-detail" align="left">__isset</td></tr><tr><td class="comment" align="left"> </td><td class="comment" colspan="2" align="left"> </td></tr><tr><td class="feature-detail" align="left">public</td><td class="feature-detail" align="left">
+                <p class="datatype">void</p>
+              </td><td class="feature-detail" align="left">__get</td></tr><tr><td class="comment" align="left"> </td><td class="comment" colspan="2" align="left"> </td></tr><tr><td class="feature-detail" align="left">public</td><td class="feature-detail" align="left">
+                <p class="datatype">void</p>
+              </td><td class="feature-detail" align="left">__clone</td></tr><tr><td class="comment" align="left"> </td><td class="comment" colspan="2" align="left"> </td></tr><tr><td class="feature-detail" align="left">public</td><td class="feature-detail" align="left">
+                <p class="datatype">void</p>
+              </td><td class="feature-detail" align="left">__destruct</td></tr><tr><td class="comment" align="left"> </td><td class="comment" colspan="2" align="left"> </td></tr></tbody></table></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="id2765412"></a>array</h3></div></div></div><div class="table"><a name="id2765419"></a><p class="title"><b>Table 3. </b></p><table summary="" border="1"><colgroup><col align="left"><col align="left"><col align="left"></colgroup><thead><tr><th class="class-title" align="left">Class</th><th class="class-name" colspan="2" align="left">array</th></tr></thead><tbody><tr><td colspan="3" align="left">
+                <p></p>
+              </td></tr></tbody></table></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="id2765506"></a>mixed</h3></div></div></div><div class="table"><a name="id2765513"></a><p class="title"><b>Table 4. </b></p><table summary="" border="1"><colgroup><col align="left"><col align="left"><col align="left"></colgroup><thead><tr><th class="class-title" align="left">Class</th><th class="class-name" colspan="2" align="left">mixed</th></tr></thead><tbody><tr><td colspan="3" align="left">
+                <p></p>
+              </td></tr></tbody></table></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="id2765600"></a>OrionCommand_Settings</h3></div></div></div><div class="table"><a name="id2765607"></a><p class="title"><b>Table 5. </b></p><table summary="" border="1"><colgroup><col align="left"><col align="left"><col align="left"></colgroup><thead><tr><th class="class-title" align="left">Class</th><th class="class-name" colspan="2" align="left">OrionCommand_Settings</th></tr></thead><tbody><tr><td class="info-title" colspan="3" align="left">Attributes:</td></tr><tr><td class="feature-heading" align="left">visibility</td><td class="feature-heading" align="left">type</td><td class="feature-heading" align="left">name</td></tr><tr><td class="feature-detail" align="left">private</td><td class="feature-detail" align="left">OrionKernel</td><td class="feature-detail" align="left">$_kern</td></tr><tr><td class="comment" align="left"> </td><td class="comment" colspan="2" align="left"> </td></tr><tr><td class="feature-detail" align="left">private</td><td class="feature-detail" align="left"> </td><td class="feature-detail" align="left">$route</td></tr><tr><td class="comment" align="left"> </td><td class="comment" colspan="2" align="left"> </td></tr><tr><td class="feature-detail" align="left">protected</td><td class="feature-detail" align="left"> </td><td class="feature-detail" align="left">$df</td></tr><tr><td class="comment" align="left"> </td><td class="comment" colspan="2" align="left"> </td></tr><tr><td class="info-title" colspan="3" align="left">
+                <p>Operations:</p>
+              </td></tr><tr><td class="feature-heading" align="left">
+                <p>visibility</p>
+              </td><td class="feature-heading" align="left">
+                <p>return</p>
+              </td><td class="feature-heading" align="left">
+                <p>name</p>
+              </td></tr><tr><td class="feature-detail" align="left">protected</td><td class="feature-detail" align="left">
+                <p class="datatype">void</p>
+              </td><td class="feature-detail" align="left">__construct</td></tr><tr><td class="comment" align="left"> </td><td class="comment" colspan="2" align="left"> </td></tr><tr><td class="feature-detail" align="left">public</td><td class="feature-detail" align="left">
+                <p class="datatype">void</p>
+              </td><td class="feature-detail" align="left">getOrionConstantRelated</td></tr><tr><td class="comment" align="left"> </td><td class="comment" colspan="2" align="left"> </td></tr><tr><td class="feature-detail" align="left">private</td><td class="feature-detail" align="left">
+                <p class="datatype">void</p>
+              </td><td class="feature-detail" align="left">_getOrionConstantRelated</td></tr><tr><td class="comment" align="left"> </td><td class="comment" colspan="2" align="left"> </td></tr><tr><td class="feature-detail" align="left">public</td><td class="feature-detail" align="left">
+                <p class="datatype">void</p>
+              </td><td class="feature-detail" align="left">setDfConfiguration</td></tr><tr><td class="comment" align="left"> </td><td class="comment" colspan="2" align="left"> </td></tr></tbody></table></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="id2766114"></a>OrionKernel</h3></div></div></div><div class="table"><a name="id2766121"></a><p class="title"><b>Table 6. </b></p><table summary="" border="1"><colgroup><col align="left"><col align="left"><col align="left"></colgroup><thead><tr><th class="class-title" align="left">Class</th><th class="class-name" colspan="2" align="left">OrionKernel</th></tr></thead><tbody><tr><td class="info-title" colspan="3" align="left">Attributes:</td></tr><tr><td class="feature-heading" align="left">visibility</td><td class="feature-heading" align="left">type</td><td class="feature-heading" align="left">name</td></tr><tr><td class="feature-detail" align="left">public</td><td class="feature-detail" align="left">OrionCommand_Settings_Environment</td><td class="feature-detail" align="left">$_env</td></tr><tr><td class="comment" align="left"> </td><td class="comment" colspan="2" align="left"> </td></tr><tr><td class="feature-detail" align="left">public</td><td class="feature-detail" align="left">OrionOrganizer</td><td class="feature-detail" align="left">$organizer</td></tr><tr><td class="comment" align="left"> </td><td class="comment" colspan="2" align="left"> </td></tr><tr><td class="feature-detail" align="left">protected</td><td class="feature-detail" align="left"> </td><td class="feature-detail" align="left">$commandInfo</td></tr><tr><td class="comment" align="left"> </td><td class="comment" colspan="2" align="left"> </td></tr><tr><td class="feature-detail" align="left">private</td><td class="feature-detail" align="left">OrionCommand_Factory</td><td class="feature-detail" align="left">$_factory</td></tr><tr><td class="comment" align="left"> </td><td class="comment" colspan="2" align="left"> </td></tr><tr><td class="info-title" colspan="3" align="left">
+                <p>Operations:</p>
+              </td></tr><tr><td class="feature-heading" align="left">
+                <p>visibility</p>
+              </td><td class="feature-heading" align="left">
+                <p>return</p>
+              </td><td class="feature-heading" align="left">
+                <p>name</p>
+              </td></tr><tr><td class="feature-detail" align="left">private</td><td class="feature-detail" align="left">
+                <p class="datatype">void</p>
+              </td><td class="feature-detail" align="left">__construct</td></tr><tr><td class="comment" align="left"> </td><td class="comment" colspan="2" align="left"> </td></tr><tr><td class="feature-detail" align="left">public</td><td class="feature-detail" align="left">
+                <p class="datatype">void</p>
+              </td><td class="feature-detail" align="left">setAttribute</td></tr><tr><td class="comment" align="left"> </td><td class="comment" colspan="2" align="left"> </td></tr><tr><td class="feature-detail" align="left">public</td><td class="feature-detail" align="left">
+                <p class="datatype">void</p>
+              </td><td class="feature-detail" align="left">getInstance</td></tr><tr><td class="comment" align="left"> </td><td class="comment" colspan="2" align="left"> </td></tr><tr><td class="feature-detail" align="left">public</td><td class="feature-detail" align="left">
+                <p class="datatype">void</p>
+              </td><td class="feature-detail" align="left">getConfiguration</td></tr><tr><td class="comment" align="left"> </td><td class="comment" colspan="2" align="left"> </td></tr><tr><td class="feature-detail" align="left">public</td><td class="feature-detail" align="left">
+                <p class="datatype">void</p>
+              </td><td class="feature-detail" align="left">prepare</td></tr><tr><td class="comment" align="left"> </td><td class="comment" colspan="2" align="left"> </td></tr><tr><td class="feature-detail" align="left">public</td><td class="feature-detail" align="left">
+                <p class="datatype">void</p>
+              </td><td class="feature-detail" align="left">init</td></tr><tr><td class="comment" align="left"> </td><td class="comment" colspan="2" align="left"> </td></tr><tr><td class="feature-detail" align="left">public</td><td class="feature-detail" align="left">
+                <p class="datatype">void</p>
+              </td><td class="feature-detail" align="left">checkPermissions</td></tr><tr><td class="comment" align="left"> </td><td class="comment" colspan="2" align="left"> </td></tr><tr><td class="feature-detail" align="left">protected</td><td class="feature-detail" align="left">
+                <p class="datatype">void</p>
+              </td><td class="feature-detail" align="left">configCommand</td></tr><tr><td class="comment" align="left"> </td><td class="comment" colspan="2" align="left"> </td></tr><tr><td class="feature-detail" align="left">public</td><td class="feature-detail" align="left">
+                <p class="datatype">void</p>
+              </td><td class="feature-detail" align="left">getCommandInfo</td></tr><tr><td class="comment" align="left"> </td><td class="comment" colspan="2" align="left"> </td></tr><tr><td class="feature-detail" align="left">public</td><td class="feature-detail" align="left">
+                <p class="datatype">void</p>
+              </td><td class="feature-detail" align="left">getAttributeAsString</td></tr><tr><td class="comment" align="left"> </td><td class="comment" colspan="2" align="left"> </td></tr></tbody></table></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="id2766984"></a>OrionOrganizer</h3></div></div></div><div class="table"><a name="id2766991"></a><p class="title"><b>Table 7. </b></p><table summary="" border="1"><colgroup><col align="left"><col align="left"><col align="left"></colgroup><thead><tr><th class="class-title" align="left">Class</th><th class="class-name" colspan="2" align="left">OrionOrganizer</th></tr></thead><tbody><tr><td class="info-title" colspan="3" align="left">Attributes:</td></tr><tr><td class="feature-heading" align="left">visibility</td><td class="feature-heading" align="left">type</td><td class="feature-heading" align="left">name</td></tr><tr><td class="feature-detail" align="left">public</td><td class="feature-detail" align="left"> </td><td class="feature-detail" align="left">$project</td></tr><tr><td class="comment" align="left"> </td><td class="comment" colspan="2" align="left"> </td></tr><tr><td class="feature-detail" align="left">public</td><td class="feature-detail" align="left"> </td><td class="feature-detail" align="left">$paths</td></tr><tr><td class="comment" align="left"> </td><td class="comment" colspan="2" align="left"> </td></tr><tr><td class="feature-detail" align="left">public</td><td class="feature-detail" align="left"> </td><td class="feature-detail" align="left">$urls</td></tr><tr><td class="comment" align="left"> </td><td class="comment" colspan="2" align="left"> </td></tr><tr><td class="info-title" colspan="3" align="left">
+                <p>Operations:</p>
+              </td></tr><tr><td class="feature-heading" align="left">
+                <p>visibility</p>
+              </td><td class="feature-heading" align="left">
+                <p>return</p>
+              </td><td class="feature-heading" align="left">
+                <p>name</p>
+              </td></tr><tr><td class="feature-detail" align="left">private</td><td class="feature-detail" align="left">
+                <p class="datatype">void</p>
+              </td><td class="feature-detail" align="left">__construct</td></tr><tr><td class="comment" align="left"> </td><td class="comment" colspan="2" align="left"> </td></tr><tr><td class="feature-detail" align="left">public</td><td class="feature-detail" align="left">
+                <p class="datatype">void</p>
+              </td><td class="feature-detail" align="left">getInstance</td></tr><tr><td class="comment" align="left"> </td><td class="comment" colspan="2" align="left"> </td></tr><tr><td class="feature-detail" align="left">public</td><td class="feature-detail" align="left">
+                <p class="datatype">void</p>
+              </td><td class="feature-detail" align="left">organizing</td></tr><tr><td class="comment" align="left"> </td><td class="comment" colspan="2" align="left"> </td></tr><tr><td class="feature-detail" align="left">public</td><td class="feature-detail" align="left">
+                <p class="datatype">void</p>
+              </td><td class="feature-detail" align="left">setOrionGlobalVars</td></tr><tr><td class="comment" align="left"> </td><td class="comment" colspan="2" align="left"> </td></tr><tr><td class="feature-detail" align="left">public</td><td class="feature-detail" align="left">
+                <p class="datatype">void</p>
+              </td><td class="feature-detail" align="left">addPath</td></tr><tr><td class="comment" align="left"> </td><td class="comment" colspan="2" align="left"> </td></tr><tr><td class="feature-detail" align="left">public</td><td class="feature-detail" align="left">
+                <p class="datatype">void</p>
+              </td><td class="feature-detail" align="left">addURL</td></tr><tr><td class="comment" align="left"> </td><td class="comment" colspan="2" align="left"> </td></tr><tr><td class="feature-detail" align="left">public</td><td class="feature-detail" align="left">
+                <p class="datatype">void</p>
+              </td><td class="feature-detail" align="left">__toString()</td></tr><tr><td class="comment" align="left"> </td><td class="comment" colspan="2" align="left"> </td></tr><tr><td class="feature-detail" align="left">public</td><td class="feature-detail" align="left">
+                <p class="datatype">void</p>
+              </td><td class="feature-detail" align="left">getModuleAction</td></tr><tr><td class="comment" align="left"> </td><td class="comment" colspan="2" align="left"> </td></tr><tr><td class="feature-detail" align="left">public</td><td class="feature-detail" align="left">
+                <p class="datatype">void</p>
+              </td><td class="feature-detail" align="left">__call</td></tr><tr><td class="comment" align="left"> </td><td class="comment" colspan="2" align="left"> </td></tr></tbody></table></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="id2767754"></a>OrionCommand_Info_Rewrite</h3></div></div></div><div class="table"><a name="id2767761"></a><p class="title"><b>Table 8. </b></p><table summary="" border="1"><colgroup><col align="left"><col align="left"><col align="left"></colgroup><thead><tr><th class="class-title" align="left">Class</th><th class="class-name" colspan="2" align="left">OrionCommand_Info_Rewrite</th></tr></thead><tbody><tr><td class="info-title" colspan="3" align="left">Attributes:</td></tr><tr><td class="feature-heading" align="left">visibility</td><td class="feature-heading" align="left">type</td><td class="feature-heading" align="left">name</td></tr><tr><td class="feature-detail" align="left">private</td><td class="feature-detail" align="left"> </td><td class="feature-detail" align="left">$gets</td></tr><tr><td class="comment" align="left"> </td><td class="comment" colspan="2" align="left"> </td></tr><tr><td class="info-title" colspan="3" align="left">
+                <p>Operations:</p>
+              </td></tr><tr><td class="feature-heading" align="left">
+                <p>visibility</p>
+              </td><td class="feature-heading" align="left">
+                <p>return</p>
+              </td><td class="feature-heading" align="left">
+                <p>name</p>
+              </td></tr><tr><td class="feature-detail" align="left">public</td><td class="feature-detail" align="left">
+                <p class="datatype">void</p>
+              </td><td class="feature-detail" align="left">getModule</td></tr><tr><td class="comment" align="left"> </td><td class="comment" colspan="2" align="left"> </td></tr><tr><td class="feature-detail" align="left">public</td><td class="feature-detail" align="left">
+                <p class="datatype">void</p>
+              </td><td class="feature-detail" align="left">getAction</td></tr><tr><td class="comment" align="left"> </td><td class="comment" colspan="2" align="left"> </td></tr><tr><td class="feature-detail" align="left">public</td><td class="feature-detail" align="left">
+                <p class="datatype">void</p>
+              </td><td class="feature-detail" align="left">__construct</td></tr><tr><td class="comment" align="left"> </td><td class="comment" colspan="2" align="left"> </td></tr><tr><td class="feature-detail" align="left">public</td><td class="feature-detail" align="left">
+                <p class="datatype">void</p>
+              </td><td class="feature-detail" align="left">getData</td></tr><tr><td class="comment" align="left"> </td><td class="comment" colspan="2" align="left"> </td></tr><tr><td class="feature-detail" align="left">public</td><td class="feature-detail" align="left">
+                <p class="datatype">void</p>
+              </td><td class="feature-detail" align="left">getArray</td></tr><tr><td class="comment" align="left"> </td><td class="comment" colspan="2" align="left"> </td></tr><tr><td class="feature-detail" align="left">public</td><td class="feature-detail" align="left">
+                <p class="datatype">void</p>
+              </td><td class="feature-detail" align="left">getVarByIndex</td></tr><tr><td class="comment" align="left"> </td><td class="comment" colspan="2" align="left"> </td></tr><tr><td class="feature-detail" align="left">public</td><td class="feature-detail" align="left">
+                <p class="datatype">void</p>
+              </td><td class="feature-detail" align="left">getArrayToLower</td></tr><tr><td class="comment" align="left"> </td><td class="comment" colspan="2" align="left"> </td></tr></tbody></table></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="id2768335"></a>OrionCommand_Info_Default</h3></div></div></div><div class="table"><a name="id2768342"></a><p class="title"><b>Table 9. </b></p><table summary="" border="1"><colgroup><col align="left"><col align="left"><col align="left"></colgroup><thead><tr><th class="class-title" align="left">Class</th><th class="class-name" colspan="2" align="left">OrionCommand_Info_Default</th></tr></thead><tbody><tr><td class="info-title" colspan="3" align="left">Attributes:</td></tr><tr><td class="feature-heading" align="left">visibility</td><td class="feature-heading" align="left">type</td><td class="feature-heading" align="left">name</td></tr><tr><td class="feature-detail" align="left">private</td><td class="feature-detail" align="left"> </td><td class="feature-detail" align="left">$gets</td></tr><tr><td class="comment" align="left"> </td><td class="comment" colspan="2" align="left"> </td></tr><tr><td class="info-title" colspan="3" align="left">
+                <p>Operations:</p>
+              </td></tr><tr><td class="feature-heading" align="left">
+                <p>visibility</p>
+              </td><td class="feature-heading" align="left">
+                <p>return</p>
+              </td><td class="feature-heading" align="left">
+                <p>name</p>
+              </td></tr><tr><td class="feature-detail" align="left">public</td><td class="feature-detail" align="left">
+                <p class="datatype">void</p>
+              </td><td class="feature-detail" align="left">getModule</td></tr><tr><td class="comment" align="left"> </td><td class="comment" colspan="2" align="left"> </td></tr><tr><td class="feature-detail" align="left">public</td><td class="feature-detail" align="left">
+                <p class="datatype">void</p>
+              </td><td class="feature-detail" align="left">getAction</td></tr><tr><td class="comment" align="left"> </td><td class="comment" colspan="2" align="left"> </td></tr><tr><td class="feature-detail" align="left">public</td><td class="feature-detail" align="left">
+                <p class="datatype">void</p>
+              </td><td class="feature-detail" align="left">getArray</td></tr><tr><td class="comment" align="left"> </td><td class="comment" colspan="2" align="left"> </td></tr></tbody></table></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="id2768709"></a>OrionCommand_Settings_Environment</h3></div></div></div><div class="table"><a name="id2768716"></a><p class="title"><b>Table 10. </b></p><table summary="" border="1"><colgroup><col align="left"><col align="left"><col align="left"></colgroup><thead><tr><th class="class-title" align="left">Class</th><th class="class-name" colspan="2" align="left">OrionCommand_Settings_Environment</th></tr></thead><tbody><tr><td class="info-title" colspan="3" align="left">
+                <p>Operations:</p>
+              </td></tr><tr><td class="feature-heading" align="left">
+                <p>visibility</p>
+              </td><td class="feature-heading" align="left">
+                <p>return</p>
+              </td><td class="feature-heading" align="left">
+                <p>name</p>
+              </td></tr><tr><td class="feature-detail" align="left">public</td><td class="feature-detail" align="left">
+                <p class="datatype">void</p>
+              </td><td class="feature-detail" align="left">__construct</td></tr><tr><td class="comment" align="left"> </td><td class="comment" colspan="2" align="left"> </td></tr><tr><td class="feature-detail" align="left">public</td><td class="feature-detail" align="left">
+                <p class="datatype">void</p>
+              </td><td class="feature-detail" align="left">setAttribute</td></tr><tr><td class="comment" align="left"> </td><td class="comment" colspan="2" align="left"> </td></tr><tr><td class="feature-detail" align="left">public</td><td class="feature-detail" align="left">
+                <p class="datatype">void</p>
+              </td><td class="feature-detail" align="left">setAttributeByConfClass</td></tr><tr><td class="comment" align="left"> </td><td class="comment" colspan="2" align="left"> </td></tr><tr><td class="feature-detail" align="left">public</td><td class="feature-detail" align="left">
+                <p class="datatype">void</p>
+              </td><td class="feature-detail" align="left">setAttributesByConfClass</td></tr><tr><td class="comment" align="left"> </td><td class="comment" colspan="2" align="left"> </td></tr><tr><td class="feature-detail" align="left">public</td><td class="feature-detail" align="left">
+                <p class="datatype">void</p>
+              </td><td class="feature-detail" align="left">getAttribute</td></tr><tr><td class="comment" align="left"> </td><td class="comment" colspan="2" align="left"> </td></tr><tr><td class="feature-detail" align="left">public</td><td class="feature-detail" align="left">
+                <p class="datatype">void</p>
+              </td><td class="feature-detail" align="left">getInstance</td></tr><tr><td class="comment" align="left"> </td><td class="comment" colspan="2" align="left"> </td></tr><tr><td class="feature-detail" align="left">public</td><td class="feature-detail" align="left">
+                <p class="datatype">void</p>
+              </td><td class="feature-detail" align="left">getIterator</td></tr><tr><td class="comment" align="left"> </td><td class="comment" colspan="2" align="left"> </td></tr></tbody></table></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="id2769206"></a>OrionCommand_Factory</h3></div></div></div><div class="table"><a name="id2769213"></a><p class="title"><b>Table 11. </b></p><table summary="" border="1"><colgroup><col align="left"><col align="left"><col align="left"></colgroup><thead><tr><th class="class-title" align="left">Class</th><th class="class-name" colspan="2" align="left">OrionCommand_Factory</th></tr></thead><tbody><tr><td class="info-title" colspan="3" align="left">
+                <p>Operations:</p>
+              </td></tr><tr><td class="feature-heading" align="left">
+                <p>visibility</p>
+              </td><td class="feature-heading" align="left">
+                <p>return</p>
+              </td><td class="feature-heading" align="left">
+                <p>name</p>
+              </td></tr><tr><td class="feature-detail" align="left">public</td><td class="feature-detail" align="left">
+                <p class="datatype">void</p>
+              </td><td class="feature-detail" align="left">createCommand</td></tr><tr><td class="comment" align="left"> </td><td class="comment" colspan="2" align="left"> </td></tr></tbody></table></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="diagrams"></a>Diagrams</h2></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="id2769413"></a>diagrama de classe</h3></div></div></div><p></p><div class="mediaobject"><img src="diagrama%20de%20classe.png"></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="id2769439"></a>Classes:</h3></div></div></div><p></p></div></div></div></body></html>
