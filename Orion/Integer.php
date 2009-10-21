@@ -15,7 +15,7 @@ class OrionInteger extends OrionNumber
 		elseif(is_object($int) && get_class($int) == __CLASS__)
 			$this->value = $int->value;
 		else
-			throw new OrionException(sprintf("%s passado para o construtor de %s, deveria ser um inteiro.", ucfirst(strtolower(gettype($int))), __CLASS__), OrionError::TYPE_INTEGER);
+			$this->throwExceptionInvalidType($int, 'Integer');
 		$this->val = &$this->value;
 		$this->size = &$this->value;
 		$this->value = $int;
@@ -62,7 +62,7 @@ class OrionInteger extends OrionNumber
 	
 	public function toString()
 	{
-		return sprintf("%s", $this->value);
+		return strval($this->value);
 	}
 	
 	public function decode($str)
@@ -72,6 +72,14 @@ class OrionInteger extends OrionNumber
 	
 	public function floatValue($precision = 2)
 	{
-		return (float) sprintf("%01.".$precision."f", $this->value);
+		return floatval(sprintf("%.".$precision."f", $this->value));
+	}
+	
+	private function throwExceptionInvalidType($nr, $type = 'String')
+	{
+		if(class_exists('OrionException'))
+			throw new OrionException(sprintf("%s passado para o construtor de %s, deveria ser %s.", ucfirst(strtolower(gettype($nr))), __CLASS__, $type), OrionError::TYPE_INTEGER);
+		else
+			throw new Exception(sprintf("%s passado para o construtor de %s, deveria ser %s.", ucfirst(strtolower(gettype($nr))), __CLASS__, $type));
 	}
 }
