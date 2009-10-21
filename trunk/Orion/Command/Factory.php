@@ -31,9 +31,10 @@
  * @version     $Revision: 1 $
  */
 
- class OrionCommand_Factory {
- 	
-     public function createCommand(OrionCommand_Info $info) {
+ class OrionCommand_Factory 
+ {
+     public function createCommand(OrionCommand_Info $info) 
+	 {
      	/**
 		 * Se o module e a Action não for informado, por default
 		 * recebe o 'index'
@@ -41,7 +42,6 @@
      	$module = ($info->getModule() != NULL) ? $info->getModule() : 'index';
      	$action = ($info->getAction() != NULL) ? $info->getAction() : 'index';
      	$data = array_map('strtolower', $info->getArray());
-
      	/**
 		 * Passa a primeira letra para maíusculo
 		 */
@@ -56,9 +56,10 @@
      	if( !file_exists($filename) ) 
 		{
 			if(Orion::getAttribute(Orion::ATTR_ENV) == Orion::ATTR_ENV_DEV)
-				throw new OrionException_PageNotFound(sprintf('Página não encontrada.'), $module, $action);
+				throw new OrionException_PageNotFound(sprintf('Página não encontrada.: %s', $filename), $module, $action);
+			
      	}
-
+		
      	/**
 		 * Inclui o arquivo
 		 */
