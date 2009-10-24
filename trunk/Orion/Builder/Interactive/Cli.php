@@ -38,10 +38,11 @@ class OrionBuilder_Interactive_Cli
 		
 	const ATTR_ICLI_MODE 			= 1;
 	const ATTR_ICLI_MODE_NCURSES	= 2;
+	const ATTR_ICLI_MODE_NORMAL		= 3;
 	
 	public function __construct()
 	{
-		$this->_attrs[ATTR_ICLI_MODE] = ATTR_ICLI_MODE_NORMAL;
+		$this->_attrs[self::ATTR_ICLI_MODE] = self::ATTR_ICLI_MODE_NORMAL;
 	}
 	
 	public function init()
