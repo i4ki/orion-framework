@@ -1,0 +1,8 @@
+project:
+    name: project_test
+    host: http://project-test
+    date: 26-08-2009
+    environment: development
+    debug: true
+    url-mode: rewrite
+    lang: pt_BR
