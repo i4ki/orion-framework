@@ -91,7 +91,7 @@ class OrionCommand_Settings_Environment
 					else
 						$value = constant('Orion::'.$val);
 				}
-				$this->_attributes[$attr] = $value;
+			$this->_attributes[$attr] = $value;
 		}	
 			return;
 	}
