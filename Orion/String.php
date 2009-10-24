@@ -186,6 +186,14 @@ class OrionString
 		return $this->value;
 	}
 	
+	public function fromCharArrayCodeHex(array $hex)
+	{
+		$this->value = '';
+		for($i=0;$i<count($hex);$i++)
+			$this->value .= chr(hexdec($hex[$i]));
+		return $this->value;
+	}
+	
 	public function indexOf($substr, $inicio = 0)
 	{
 		return strpos($this->value, $substr, $inicio); 

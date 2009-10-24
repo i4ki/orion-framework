@@ -43,6 +43,8 @@ class OrionError
 	const SET_LIBRARY								= 8;
 	const TYPE_STRING								= 9;
 	const TYPE_INTEGER								= 10;
+	const PATH_PROJECT_INDEFINED					= 11;
+	
 	
 	/**
 	 * Erros PDO

@@ -78,16 +78,19 @@ class OrionOrganizer
 		 * Uma boa maneira de pegar o path do projeto sem depender de 
 		 * uma configuração externa, mas tem o imprevisto de o usuário ter 
 		 * o seu sistema configurado diferente do padrão dentro de libs/Vendor
+		 * ou estar usando a biblioteca sobre um link simbólico.
 		 *
 		 * __FILE__ == "/path/of/project" . "/libs/Vendor/Orion/Orion/OrionOrganizer.php";
 		 * $path_project = str_replace("/libs/Vendor/Orion/Orion/OrionOrganizer.php", "", __FILE__);
 		 */
 		$pattern = '/\/libs\/Vendor\/Orion\/Orion\/Organizer\.php$/';
 		
-		if(preg_match($pattern, __FILE__))
-			$this->paths['project'] = preg_replace($pattern, '', __FILE__);
-		else 
+		if(Orion::getAttribute(Orion::ATTR_DIR_PROJECT) !== FALSE)
 			$this->paths['project'] = Orion::getAttribute(Orion::ATTR_DIR_PROJECT);
+		elseif(preg_match($pattern, __FILE__))
+			$this->paths['project'] = preg_replace($pattern, '', __FILE__);
+		else
+			throw new OrionException("Path do projeto não configurado.", OrionError::PATH_PROJECT_INDEFINED);
 		
 		if(empty($this->paths['project']))
 			throw new OrionException(sprintf("Falha ao ajustar o diretório onde encontra-se o projeto"), OrionError::INCORRECT_DIR_PROJECT);
@@ -171,8 +174,6 @@ class OrionOrganizer
 				->addURL('google', 		'http://www.google.com')
 				->addURL('orion', 		'http://code.google.com/p/orion-framework');
 		
-		//OrionTools_Debug::debugArray($this->paths);
-		//OrionTools_Debug::debugArray($this->urls);	
 	}
 	
 	public function setOrionGlobalVars()
