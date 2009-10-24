@@ -36,7 +36,7 @@ class OrionSecurity_Crypt_RC4
 	}
 	public function setKey($key = '')
 	{
-		if(strlen($key) <= 40)
+		if(strlen($key) <= 6)
 			throw new OrionException("The key length is too small");
 		
 		$this->_key = array();
